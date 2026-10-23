@@ -150,6 +150,12 @@
     <s:String x:Key="show_desktop">显示桌面(_S)</s:String>
     <s:String x:Key="peek_at_desktop">窥视桌面(_P)</s:String>
 
+    <s:String x:Key="network_internet_access">Internet 访问</s:String>
+    <s:String x:Key="network_no_internet_access">无 Internet 访问</s:String>
+    <s:String x:Key="network_not_connected">未连接</s:String>
+    <s:String x:Key="network_settings">打开网络和 Internet 设置(_O)</s:String>
+    <s:String x:Key="network_connections">网络连接(_C)</s:String>
+
     <s:String x:Key="restore">恢复(_R)</s:String>
     <s:String x:Key="move">移动(_M)</s:String>
     <s:String x:Key="size">大小(_S)</s:String>

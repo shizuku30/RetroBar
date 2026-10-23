@@ -20,7 +20,7 @@
 
     <!-- TASKBAR BACKGROUND PNG - texture on top of transparency -->
     <BitmapImage x:Key="TaskbarBackgroundImage"
-                 UriSource="../Resources/taskbarBackground.png" />
+                 UriSource="../Resources/Win7/taskbarBackground.png" />
     <ImageBrush x:Key="TaskbarTextureBrush"
                 ImageSource="{DynamicResource TaskbarBackgroundImage}"
                 TileMode="Tile"
@@ -120,7 +120,7 @@
     <BitmapImage x:Key="ClockTileHoverImage"
                  UriSource="../Resources/Win7_Clock_TileHover.png" />
     <BitmapImage x:Key="ClockTilePressedImage"
-                 UriSource="../Resources/Win7_Clock_TilePressed.png" />
+                 UriSource="../Resources/Win7/clockPressed.png" />
 
     <system:Double x:Key="TaskbarHeight">40</system:Double>
     <system:Double x:Key="TaskbarRowHeight">34</system:Double>
@@ -628,15 +628,15 @@
     <BitmapImage x:Key="StartButtonImageBottom"
                  UriSource="../Resources/startwin7orb.png" />
     <BitmapImage x:Key="StartButtonImageBottomScaled"
-                 UriSource="../Resources/startwin7orbscaled.png" />
+                 UriSource="../Resources/startwin7orb.png" />
     <BitmapImage x:Key="StartButtonImageTop"
                  UriSource="../Resources/startwin7orb.png" />
     <BitmapImage x:Key="StartButtonImageTopScaled"
-                 UriSource="../Resources/startwin7orbscaled.png" />
+                 UriSource="../Resources/startwin7orb.png" />
     <BitmapImage x:Key="StartButtonImageLarge"
                  UriSource="../Resources/startwin7orb.png" />
     <BitmapImage x:Key="StartButtonImageLargeScaled"
-                 UriSource="../Resources/startwin7orbscaled.png" />
+                 UriSource="../Resources/startwin7orb.png" />
 
     <Style TargetType="MenuItem"
            x:Key="TaskManMenuItem">
