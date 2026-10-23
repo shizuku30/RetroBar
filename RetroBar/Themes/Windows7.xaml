@@ -1633,19 +1633,16 @@
     <Style TargetType="Image"
            x:Key="NotifyIcon"
            BasedOn="{StaticResource NotifyIcon}">
-        <!-- Win7 tray from the photo: ~24px pitch at 100%, widened by 5%
-             (right margin 9). The hover PNG doesn't take part in layout
-             (zero-width Canvas), so the item stays as wide as the plain
-             16px icon alone. The 4/1 vertical margins keep the icon in
-             the same vertical position as the approved version. -->
+        <!-- Spacing belongs to the outer NotifyIcon control, so the image
+             and its hover chrome share the same centered content box. -->
         <Setter Property="Margin"
-                Value="0,4,9,1" />
+                Value="0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
                          Value="Vertical">
                 <DataTrigger.Setters>
                     <Setter Property="Margin"
-                            Value="1,1,2,1" />
+                            Value="0" />
                 </DataTrigger.Setters>
             </DataTrigger>
         </Style.Triggers>
@@ -1656,6 +1653,8 @@
          The NotifyIcon control is re-templated without touching the
          content (the icon stays the app's plain Image). -->
     <Style TargetType="{x:Type controls:NotifyIcon}">
+        <Setter Property="Margin"
+                Value="0,4,9,1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:NotifyIcon}">
@@ -1733,6 +1732,13 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                         Value="Vertical">
+                <Setter Property="Margin"
+                        Value="1,1,2,1" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!-- Simulated Win7 notification-area overflow (XAML-only proof of
@@ -1795,7 +1801,7 @@
                                                                 BorderBrush="Transparent"
                                                                 BorderThickness="1"
                                                                 CornerRadius="2">
-                                                            <ContentPresenter Margin="8,7,4,6" />
+                                                            <ContentPresenter Margin="6" />
                                                         </Border>
                                                         </Grid>
                                                         <ControlTemplate.Triggers>

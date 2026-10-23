@@ -21,6 +21,7 @@ Local integration fixes:
 - Mark the version with the `shizuku` prerelease suffix.
 - Add Simplified Chinese labels for the new network icon tooltip and menu.
 - Remove the Win7 theme's non-native hover pin buttons in both the tray and overflow popup; keep the normal hover highlights.
+- Keep Win7 notification spacing outside the image/highlight content box and center overflow cells, so hover chrome aligns with each icon.
 
 ## Themed system tray icons
 
@@ -130,6 +131,9 @@ third-party preservation, native callback-data preservation, image subscription
 cleanup, shared network-monitor ownership, live read-only Core Audio and power,
 English/Chinese settings layout, and five icon packs at 100/150/200% rendering.
 Test setting changes are isolated in-process with persistence disabled.
+Win7 hover regression tests additionally check 320 icon/highlight centers across
+80 combinations of horizontal/vertical layout, 100/125/150/175/200% scaling,
+LTR/RTL, one/two rows, and native/themed icons; tray spacing is preserved.
 
 The following larger changes were deliberately left out: grouped tasks (#1433),
 per-monitor/layout redesign (#1503), and low-level mouse-hook replacement (#1413).

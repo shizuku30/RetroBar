@@ -220,6 +220,11 @@ internal static class SystemIconTests
                     {
                         Image highlight = icon.Template.FindName("HoverTileImg", icon) as Image;
                         Assert(highlight != null && !highlight.IsHitTestVisible, "The non-interactive tray hover highlight was lost.");
+                        ThemedNotifyIconImage glyph = Descendants(icon).OfType<ThemedNotifyIconImage>().Single();
+                        Point glyphCenter = glyph.TransformToAncestor(icon).Transform(new Point(glyph.ActualWidth / 2, glyph.ActualHeight / 2));
+                        Point highlightCenter = highlight.TransformToAncestor(icon).Transform(new Point(highlight.ActualWidth / 2, highlight.ActualHeight / 2));
+                        Assert((glyphCenter - highlightCenter).Length < 0.01,
+                            $"Tray hover is not centered: glyph={glyphCenter}, highlight={highlightCenter}");
                         if (hover) highlight.Opacity = 1;
                     }
                     Assert(!model.IsPinned, "Rendering a hover changed notification visibility.");
@@ -255,6 +260,104 @@ internal static class SystemIconTests
             finally { app.Resources.MergedDictionaries.Remove(chinese); }
         }
         finally { app.Resources.Remove("SmokeSettings"); }
+    }
+
+    public static void CheckWin7Alignment(Application app, string root)
+    {
+        using IsolatedSettings settings = new IsolatedSettings();
+        settings.Set("Theme", "Windows7");
+        ResourceDictionary theme = new ResourceDictionary { Source = new Uri(Path.Combine(root, "RetroBar", "Themes", "Windows7.xaml")) };
+        app.Resources.MergedDictionaries.Add(theme);
+        using TrayIconThemeManager manager = new TrayIconThemeManager();
+        app.Resources[TrayIconThemeManager.ResourceKey] = manager;
+        int scenarios = 0;
+        try
+        {
+            Style trayStyle = (Style)app.FindResource(typeof(RetroBar.Controls.NotifyIcon));
+            RetroBar.Controls.NotifyIconList list = new RetroBar.Controls.NotifyIconList { Style = (Style)app.FindResource(typeof(RetroBar.Controls.NotifyIconList)) };
+            list.ApplyTemplate();
+            Popup popup = (Popup)list.Template.FindName("OverflowPopup", list);
+            Style popupStyle = (Style)((Border)((Border)popup.Child).Child).Resources["PopupNotifyIcon"];
+            foreach (Orientation orientation in new[] { Orientation.Horizontal, Orientation.Vertical })
+            foreach (FlowDirection flow in new[] { FlowDirection.LeftToRight, FlowDirection.RightToLeft })
+            foreach (int rows in new[] { 1, 2 })
+            foreach (double scale in new[] { 1.0, 1.25, 1.5, 1.75, 2.0 })
+            foreach (bool enabled in new[] { false, true })
+            {
+                settings.Set("TaskbarScale", scale);
+                settings.Set("UseThemeSystemIcons", enabled);
+                AlignmentWindow window = new AlignmentWindow { Orientation = orientation, Rows = rows, FlowDirection = flow };
+                StackPanel panel = new StackPanel { Orientation = orientation, LayoutTransform = new ScaleTransform(scale, scale) };
+                Border scene = new Border { Child = panel, Padding = new Thickness(20), Background = new SolidColorBrush(Color.FromRgb(49, 65, 70)) };
+                window.Content = scene;
+                var icons = new List<(RetroBar.Controls.NotifyIcon Icon, bool Overflow)>();
+                try
+                {
+                    foreach (bool overflow in new[] { false, true })
+                    foreach (Guid guid in new[] { Volume, Network })
+                    {
+                        NotifyIcon model = new NotifyIcon(null)
+                        {
+                            GUID = guid, Icon = ThemedSystemIcons.GetImage(TrayIconTheme.Win7, guid == Volume ? "VolumeHigh" : "NetworkOnline")
+                        };
+                        RetroBar.Controls.NotifyIcon icon = new RetroBar.Controls.NotifyIcon
+                        {
+                            DataContext = model, Style = overflow ? popupStyle : trayStyle,
+                            VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Center
+                        };
+                        panel.Children.Add(new Border { Width = 50, Height = 50, Child = icon });
+                        icons.Add((icon, overflow));
+                    }
+                    window.ApplyTemplate();
+                    scene.Measure(new Size(1000, 1000));
+                    scene.Arrange(new Rect(scene.DesiredSize));
+                    scene.UpdateLayout();
+                    foreach (var sample in icons)
+                    {
+                        ThemedNotifyIconImage glyph = Descendants(sample.Icon).OfType<ThemedNotifyIconImage>().Single();
+                        FrameworkElement chrome = sample.Icon.Template.FindName(sample.Overflow ? "HoverFrame" : "HoverTileImg", sample.Icon) as FrameworkElement;
+                        Point glyphCenter = glyph.TransformToAncestor(scene).Transform(new Point(glyph.ActualWidth / 2, glyph.ActualHeight / 2));
+                        Point chromeCenter = chrome.TransformToAncestor(scene).Transform(new Point(chrome.ActualWidth / 2, chrome.ActualHeight / 2));
+                        string context = $"{orientation}/{flow}/rows={rows}/scale={scale}/enabled={enabled}/overflow={sample.Overflow}";
+                        Assert((glyphCenter - chromeCenter).Length < 0.01, $"Hover alignment error ({context}): {glyphCenter} vs {chromeCenter}");
+                        Assert(glyph.Margin == new Thickness(0), $"Image still carries layout spacing ({context}).");
+                        if (sample.Overflow)
+                        {
+                            ((Border)chrome).Background = new SolidColorBrush(Color.FromArgb(38, 110, 165, 210));
+                            ((Border)chrome).BorderBrush = new SolidColorBrush(Color.FromArgb(102, 110, 165, 210));
+                        }
+                        else
+                        {
+                            Thickness spacing = orientation == Orientation.Horizontal ? new Thickness(0, 4, 9, 1) : new Thickness(1, 1, 2, 1);
+                            Assert(sample.Icon.Margin == spacing, $"Tray spacing changed ({context}).");
+                            Assert(Math.Abs(chrome.Height - (orientation == Orientation.Horizontal ? 40 : 27)) < 0.01, $"Wrong orientation hover height ({context}).");
+                            ((Image)chrome).Opacity = 1;
+                        }
+                    }
+                    scenarios++;
+                    if (enabled && rows == 1 && flow == FlowDirection.LeftToRight)
+                    {
+                        scene.UpdateLayout();
+                        string filename = $"win7-alignment-{orientation}-{scale * 100:0}.png";
+                        SaveVisual(scene, (int)Math.Ceiling(scene.DesiredSize.Width), (int)Math.Ceiling(scene.DesiredSize.Height),
+                            Path.Combine(root, "artifacts", "smoke", $"net{Environment.Version.Major}", filename));
+                    }
+                }
+                finally { window.Content = null; window.Close(); }
+            }
+            Console.WriteLine($"  Checked {scenarios} layout scenarios and {scenarios * 4} icon/highlight centers.");
+        }
+        finally
+        {
+            app.Resources.Remove(TrayIconThemeManager.ResourceKey);
+            app.Resources.MergedDictionaries.Remove(theme);
+        }
+    }
+
+    private sealed class AlignmentWindow : Window
+    {
+        public Orientation Orientation { get; set; }
+        public int Rows { get; set; }
     }
 
     private static void RenderSettingsLayout(string root, string filename)
