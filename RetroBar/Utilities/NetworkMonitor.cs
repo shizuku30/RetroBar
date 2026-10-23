@@ -216,7 +216,8 @@ namespace RetroBar.Utilities
                 }
                 else
                 {
-                    signalBars = 4;
+                    // A denied/unavailable WLAN query does not imply a full-strength signal.
+                    signalBars = 0;
                 }
             }
 

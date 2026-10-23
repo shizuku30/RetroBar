@@ -227,6 +227,13 @@ namespace RetroBar.Utilities
             set => Set(ref _quickLaunchPath, value);
         }
 
+        private bool _useThemeSystemIcons = true;
+        public bool UseThemeSystemIcons
+        {
+            get => _useThemeSystemIcons;
+            set => Set(ref _useThemeSystemIcons, value);
+        }
+
         private bool _collapseNotifyIcons = false;
         public bool CollapseNotifyIcons
         {

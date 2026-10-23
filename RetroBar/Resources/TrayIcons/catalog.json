@@ -1,0 +1,3090 @@
+{
+  "Win98": {
+    "VolumeOn": [
+      {
+        "Size": 16,
+        "Path": "Win98/VolumeOn-16.png"
+      }
+    ],
+    "VolumeMuted": [
+      {
+        "Size": 16,
+        "Path": "Win98/VolumeMuted-16.png"
+      }
+    ],
+    "VolumeZero": [
+      {
+        "Size": 16,
+        "Path": "Win98/VolumeOn-16.png"
+      }
+    ],
+    "VolumeLow": [
+      {
+        "Size": 16,
+        "Path": "Win98/VolumeOn-16.png"
+      }
+    ],
+    "VolumeMedium": [
+      {
+        "Size": 16,
+        "Path": "Win98/VolumeOn-16.png"
+      }
+    ],
+    "VolumeHigh": [
+      {
+        "Size": 16,
+        "Path": "Win98/VolumeOn-16.png"
+      }
+    ],
+    "VolumeUnavailable": [
+      {
+        "Size": 16,
+        "Path": "Win98/VolumeMuted-16.png"
+      }
+    ],
+    "PowerFull": [
+      {
+        "Size": 16,
+        "Path": "Win98/PowerFull-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win98/PowerFull-32.png"
+      }
+    ],
+    "PowerMedium": [
+      {
+        "Size": 16,
+        "Path": "Win98/PowerMedium-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win98/PowerMedium-32.png"
+      }
+    ],
+    "PowerLow": [
+      {
+        "Size": 16,
+        "Path": "Win98/PowerLow-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win98/PowerLow-32.png"
+      }
+    ],
+    "PowerCritical": [
+      {
+        "Size": 16,
+        "Path": "Win98/PowerCritical-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win98/PowerCritical-32.png"
+      }
+    ],
+    "PowerUnknown": [
+      {
+        "Size": 16,
+        "Path": "Win98/PowerUnknown-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win98/PowerUnknown-32.png"
+      }
+    ],
+    "PowerUnavailable": [
+      {
+        "Size": 16,
+        "Path": "Win98/PowerUnavailable-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win98/PowerUnavailable-32.png"
+      }
+    ],
+    "PowerAcOnly": [
+      {
+        "Size": 16,
+        "Path": "Win98/PowerAcOnly-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win98/PowerAcOnly-32.png"
+      }
+    ],
+    "PowerAc": [
+      {
+        "Size": 16,
+        "Path": "Win98/PowerAc-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win98/PowerAc-32.png"
+      }
+    ],
+    "PowerCharging": [
+      {
+        "Size": 16,
+        "Path": "Win98/PowerCharging-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win98/PowerCharging-32.png"
+      }
+    ],
+    "NetworkOnline": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkLimited": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkDisconnected": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkDisconnected-16.png"
+      }
+    ],
+    "NetworkWiFi1": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkWiFiLimited1": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkWiFi2": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkWiFiLimited2": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkWiFi3": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkWiFiLimited3": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkWiFi4": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkWiFiLimited4": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkOther": [
+      {
+        "Size": 16,
+        "Path": "Win98/NetworkOnline-16.png"
+      }
+    ],
+    "Hardware": [
+      {
+        "Size": 16,
+        "Path": "Win98/Hardware-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win98/Hardware-32.png"
+      }
+    ]
+  },
+  "Win2000": {
+    "VolumeOn": [
+      {
+        "Size": 16,
+        "Path": "Win2000/VolumeOn-16.png"
+      }
+    ],
+    "VolumeMuted": [
+      {
+        "Size": 16,
+        "Path": "Win2000/VolumeMuted-16.png"
+      }
+    ],
+    "VolumeZero": [
+      {
+        "Size": 16,
+        "Path": "Win2000/VolumeOn-16.png"
+      }
+    ],
+    "VolumeLow": [
+      {
+        "Size": 16,
+        "Path": "Win2000/VolumeOn-16.png"
+      }
+    ],
+    "VolumeMedium": [
+      {
+        "Size": 16,
+        "Path": "Win2000/VolumeOn-16.png"
+      }
+    ],
+    "VolumeHigh": [
+      {
+        "Size": 16,
+        "Path": "Win2000/VolumeOn-16.png"
+      }
+    ],
+    "VolumeUnavailable": [
+      {
+        "Size": 16,
+        "Path": "Win2000/VolumeMuted-16.png"
+      }
+    ],
+    "PowerFull": [
+      {
+        "Size": 16,
+        "Path": "Win2000/PowerFull-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win2000/PowerFull-32.png"
+      }
+    ],
+    "PowerMedium": [
+      {
+        "Size": 16,
+        "Path": "Win2000/PowerMedium-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win2000/PowerMedium-32.png"
+      }
+    ],
+    "PowerLow": [
+      {
+        "Size": 16,
+        "Path": "Win2000/PowerLow-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win2000/PowerLow-32.png"
+      }
+    ],
+    "PowerCritical": [
+      {
+        "Size": 16,
+        "Path": "Win2000/PowerCritical-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win2000/PowerCritical-32.png"
+      }
+    ],
+    "PowerUnknown": [
+      {
+        "Size": 16,
+        "Path": "Win2000/PowerUnknown-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win2000/PowerUnknown-32.png"
+      }
+    ],
+    "PowerUnavailable": [
+      {
+        "Size": 16,
+        "Path": "Win2000/PowerUnavailable-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win2000/PowerUnavailable-32.png"
+      }
+    ],
+    "PowerAcOnly": [
+      {
+        "Size": 16,
+        "Path": "Win2000/PowerAcOnly-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win2000/PowerAcOnly-32.png"
+      }
+    ],
+    "PowerAc": [
+      {
+        "Size": 16,
+        "Path": "Win2000/PowerAc-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win2000/PowerAc-32.png"
+      }
+    ],
+    "PowerCharging": [
+      {
+        "Size": 16,
+        "Path": "Win2000/PowerCharging-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win2000/PowerCharging-32.png"
+      }
+    ],
+    "NetworkOnline": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkLimited": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkDisconnected": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkDisconnected-16.png"
+      }
+    ],
+    "NetworkWiFi1": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkWiFiLimited1": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkWiFi2": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkWiFiLimited2": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkWiFi3": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkWiFiLimited3": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkWiFi4": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkWiFiLimited4": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkOther": [
+      {
+        "Size": 16,
+        "Path": "Win2000/NetworkOnline-16.png"
+      }
+    ],
+    "Hardware": [
+      {
+        "Size": 16,
+        "Path": "Win2000/Hardware-16.png"
+      }
+    ]
+  },
+  "WinXP": {
+    "VolumeOn": [
+      {
+        "Size": 16,
+        "Path": "WinXP/VolumeOn-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/VolumeOn-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "WinXP/VolumeOn-48.png"
+      }
+    ],
+    "VolumeMuted": [
+      {
+        "Size": 16,
+        "Path": "WinXP/VolumeMuted-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/VolumeMuted-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "WinXP/VolumeMuted-48.png"
+      }
+    ],
+    "VolumeZero": [
+      {
+        "Size": 16,
+        "Path": "WinXP/VolumeOn-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/VolumeOn-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "WinXP/VolumeOn-48.png"
+      }
+    ],
+    "VolumeLow": [
+      {
+        "Size": 16,
+        "Path": "WinXP/VolumeOn-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/VolumeOn-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "WinXP/VolumeOn-48.png"
+      }
+    ],
+    "VolumeMedium": [
+      {
+        "Size": 16,
+        "Path": "WinXP/VolumeOn-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/VolumeOn-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "WinXP/VolumeOn-48.png"
+      }
+    ],
+    "VolumeHigh": [
+      {
+        "Size": 16,
+        "Path": "WinXP/VolumeOn-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/VolumeOn-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "WinXP/VolumeOn-48.png"
+      }
+    ],
+    "VolumeUnavailable": [
+      {
+        "Size": 16,
+        "Path": "WinXP/VolumeMuted-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/VolumeMuted-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "WinXP/VolumeMuted-48.png"
+      }
+    ],
+    "PowerFull": [
+      {
+        "Size": 16,
+        "Path": "WinXP/PowerFull-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/PowerFull-32.png"
+      }
+    ],
+    "PowerMedium": [
+      {
+        "Size": 16,
+        "Path": "WinXP/PowerMedium-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/PowerMedium-32.png"
+      }
+    ],
+    "PowerLow": [
+      {
+        "Size": 16,
+        "Path": "WinXP/PowerLow-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/PowerLow-32.png"
+      }
+    ],
+    "PowerCritical": [
+      {
+        "Size": 16,
+        "Path": "WinXP/PowerCritical-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/PowerCritical-32.png"
+      }
+    ],
+    "PowerUnknown": [
+      {
+        "Size": 16,
+        "Path": "WinXP/PowerUnknown-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/PowerUnknown-32.png"
+      }
+    ],
+    "PowerUnavailable": [
+      {
+        "Size": 16,
+        "Path": "WinXP/PowerUnavailable-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/PowerUnavailable-32.png"
+      }
+    ],
+    "PowerAcOnly": [
+      {
+        "Size": 16,
+        "Path": "WinXP/PowerAcOnly-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/PowerAcOnly-32.png"
+      }
+    ],
+    "PowerAc": [
+      {
+        "Size": 16,
+        "Path": "WinXP/PowerAc-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/PowerAc-32.png"
+      }
+    ],
+    "PowerCharging": [
+      {
+        "Size": 16,
+        "Path": "WinXP/PowerCharging-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/PowerCharging-32.png"
+      }
+    ],
+    "NetworkOnline": [
+      {
+        "Size": 16,
+        "Path": "WinXP/NetworkOnline-16.png"
+      }
+    ],
+    "NetworkLimited": [
+      {
+        "Size": 16,
+        "Path": "WinXP/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkDisconnected": [
+      {
+        "Size": 16,
+        "Path": "WinXP/NetworkDisconnected-16.png"
+      }
+    ],
+    "NetworkWiFi1": [
+      {
+        "Size": 48,
+        "Path": "WinXP/NetworkWiFi1-48.png"
+      }
+    ],
+    "NetworkWiFiLimited1": [
+      {
+        "Size": 16,
+        "Path": "WinXP/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkWiFi2": [
+      {
+        "Size": 48,
+        "Path": "WinXP/NetworkWiFi2-48.png"
+      }
+    ],
+    "NetworkWiFiLimited2": [
+      {
+        "Size": 16,
+        "Path": "WinXP/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkWiFi3": [
+      {
+        "Size": 48,
+        "Path": "WinXP/NetworkWiFi3-48.png"
+      }
+    ],
+    "NetworkWiFiLimited3": [
+      {
+        "Size": 16,
+        "Path": "WinXP/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkWiFi4": [
+      {
+        "Size": 48,
+        "Path": "WinXP/NetworkWiFi4-48.png"
+      }
+    ],
+    "NetworkWiFiLimited4": [
+      {
+        "Size": 16,
+        "Path": "WinXP/NetworkLimited-16.png"
+      }
+    ],
+    "NetworkOther": [
+      {
+        "Size": 16,
+        "Path": "WinXP/NetworkOnline-16.png"
+      }
+    ],
+    "Hardware": [
+      {
+        "Size": 16,
+        "Path": "WinXP/Hardware-16.png"
+      },
+      {
+        "Size": 32,
+        "Path": "WinXP/Hardware-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "WinXP/Hardware-48.png"
+      }
+    ]
+  },
+  "Vista": {
+    "VolumeMuted": [
+      {
+        "Size": 16,
+        "Path": "Vista/VolumeMuted-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/VolumeMuted-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/VolumeMuted-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/VolumeMuted-32.png"
+      }
+    ],
+    "VolumeZero": [
+      {
+        "Size": 16,
+        "Path": "Vista/VolumeZero-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/VolumeZero-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/VolumeZero-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/VolumeZero-32.png"
+      }
+    ],
+    "VolumeLow": [
+      {
+        "Size": 16,
+        "Path": "Vista/VolumeLow-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/VolumeLow-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/VolumeLow-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/VolumeLow-32.png"
+      }
+    ],
+    "VolumeMedium": [
+      {
+        "Size": 16,
+        "Path": "Vista/VolumeMedium-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/VolumeMedium-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/VolumeMedium-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/VolumeMedium-32.png"
+      }
+    ],
+    "VolumeHigh": [
+      {
+        "Size": 16,
+        "Path": "Vista/VolumeHigh-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/VolumeHigh-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/VolumeHigh-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/VolumeHigh-32.png"
+      }
+    ],
+    "VolumeUnavailable": [
+      {
+        "Size": 16,
+        "Path": "Vista/VolumeUnavailable-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/VolumeUnavailable-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/VolumeUnavailable-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/VolumeUnavailable-32.png"
+      }
+    ],
+    "PowerBattery0": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerBattery0-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerBattery0-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerBattery0-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerBattery0-32.png"
+      }
+    ],
+    "PowerLow0": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerLow0-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerLow0-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerLow0-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerLow0-32.png"
+      }
+    ],
+    "PowerCritical0": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCritical0-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCritical0-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCritical0-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCritical0-32.png"
+      }
+    ],
+    "PowerCharging0": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCharging0-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCharging0-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCharging0-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCharging0-32.png"
+      }
+    ],
+    "PowerAc0": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerAc0-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerAc0-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerAc0-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerAc0-32.png"
+      }
+    ],
+    "PowerBattery1": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerBattery1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerBattery1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerBattery1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerBattery1-32.png"
+      }
+    ],
+    "PowerLow1": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerLow1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerLow1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerLow1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerLow1-32.png"
+      }
+    ],
+    "PowerCritical1": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCritical1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCritical1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCritical1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCritical1-32.png"
+      }
+    ],
+    "PowerCharging1": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCharging1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCharging1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCharging1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCharging1-32.png"
+      }
+    ],
+    "PowerAc1": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerAc1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerAc1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerAc1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerAc1-32.png"
+      }
+    ],
+    "PowerBattery2": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerBattery2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerBattery2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerBattery2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerBattery2-32.png"
+      }
+    ],
+    "PowerLow2": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerLow2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerLow2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerLow2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerLow2-32.png"
+      }
+    ],
+    "PowerCritical2": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCritical2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCritical2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCritical2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCritical2-32.png"
+      }
+    ],
+    "PowerCharging2": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCharging2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCharging2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCharging2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCharging2-32.png"
+      }
+    ],
+    "PowerAc2": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerAc2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerAc2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerAc2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerAc2-32.png"
+      }
+    ],
+    "PowerBattery3": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerBattery3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerBattery3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerBattery3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerBattery3-32.png"
+      }
+    ],
+    "PowerLow3": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerLow3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerLow3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerLow3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerLow3-32.png"
+      }
+    ],
+    "PowerCritical3": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCritical3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCritical3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCritical3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCritical3-32.png"
+      }
+    ],
+    "PowerCharging3": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCharging3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCharging3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCharging3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCharging3-32.png"
+      }
+    ],
+    "PowerAc3": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerAc3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerAc3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerAc3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerAc3-32.png"
+      }
+    ],
+    "PowerBattery4": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerBattery4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerBattery4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerBattery4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerBattery4-32.png"
+      }
+    ],
+    "PowerLow4": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerLow4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerLow4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerLow4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerLow4-32.png"
+      }
+    ],
+    "PowerCritical4": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCritical4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCritical4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCritical4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCritical4-32.png"
+      }
+    ],
+    "PowerCharging4": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCharging4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCharging4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCharging4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCharging4-32.png"
+      }
+    ],
+    "PowerAc4": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerAc4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerAc4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerAc4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerAc4-32.png"
+      }
+    ],
+    "PowerBattery5": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerBattery5-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerBattery5-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerBattery5-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerBattery5-32.png"
+      }
+    ],
+    "PowerLow5": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerLow5-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerLow5-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerLow5-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerLow5-32.png"
+      }
+    ],
+    "PowerCritical5": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCritical5-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCritical5-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCritical5-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCritical5-32.png"
+      }
+    ],
+    "PowerCharging5": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCharging5-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCharging5-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCharging5-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCharging5-32.png"
+      }
+    ],
+    "PowerAc5": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerAc5-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerAc5-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerAc5-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerAc5-32.png"
+      }
+    ],
+    "PowerBattery6": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerBattery6-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerBattery6-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerBattery6-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerBattery6-32.png"
+      }
+    ],
+    "PowerLow6": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerLow6-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerLow6-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerLow6-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerLow6-32.png"
+      }
+    ],
+    "PowerCritical6": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCritical6-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCritical6-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCritical6-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCritical6-32.png"
+      }
+    ],
+    "PowerCharging6": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCharging6-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCharging6-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCharging6-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCharging6-32.png"
+      }
+    ],
+    "PowerAc6": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerAc6-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerAc6-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerAc6-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerAc6-32.png"
+      }
+    ],
+    "PowerBattery7": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerBattery7-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerBattery7-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerBattery7-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerBattery7-32.png"
+      }
+    ],
+    "PowerLow7": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerLow7-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerLow7-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerLow7-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerLow7-32.png"
+      }
+    ],
+    "PowerCritical7": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCritical7-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCritical7-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCritical7-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCritical7-32.png"
+      }
+    ],
+    "PowerCharging7": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCharging7-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCharging7-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCharging7-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCharging7-32.png"
+      }
+    ],
+    "PowerAc7": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerAc7-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerAc7-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerAc7-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerAc7-32.png"
+      }
+    ],
+    "PowerBattery8": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerBattery8-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerBattery8-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerBattery8-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerBattery8-32.png"
+      }
+    ],
+    "PowerLow8": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerLow8-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerLow8-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerLow8-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerLow8-32.png"
+      }
+    ],
+    "PowerCritical8": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCritical8-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCritical8-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCritical8-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCritical8-32.png"
+      }
+    ],
+    "PowerCharging8": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerCharging8-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerCharging8-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerCharging8-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerCharging8-32.png"
+      }
+    ],
+    "PowerAc8": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerAc8-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerAc8-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerAc8-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerAc8-32.png"
+      }
+    ],
+    "PowerUnknown": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerUnknown-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerUnknown-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerUnknown-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerUnknown-32.png"
+      }
+    ],
+    "PowerUnavailable": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerUnavailable-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerUnavailable-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerUnavailable-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerUnavailable-32.png"
+      }
+    ],
+    "PowerAcOnly": [
+      {
+        "Size": 16,
+        "Path": "Vista/PowerAcOnly-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/PowerAcOnly-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/PowerAcOnly-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/PowerAcOnly-32.png"
+      }
+    ],
+    "NetworkOnline": [
+      {
+        "Size": 16,
+        "Path": "Vista/NetworkOnline-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/NetworkOnline-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/NetworkOnline-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkOnline-32.png"
+      }
+    ],
+    "NetworkLimited": [
+      {
+        "Size": 16,
+        "Path": "Vista/NetworkLimited-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/NetworkLimited-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/NetworkLimited-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkLimited-32.png"
+      }
+    ],
+    "NetworkDisconnected": [
+      {
+        "Size": 16,
+        "Path": "Vista/NetworkDisconnected-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/NetworkDisconnected-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/NetworkDisconnected-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkDisconnected-32.png"
+      }
+    ],
+    "NetworkWiFi1": [
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkWiFi1-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "Vista/NetworkWiFi1-48.png"
+      }
+    ],
+    "NetworkWiFiLimited1": [
+      {
+        "Size": 16,
+        "Path": "Vista/NetworkLimited-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/NetworkLimited-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/NetworkLimited-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkLimited-32.png"
+      }
+    ],
+    "NetworkWiFi2": [
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkWiFi2-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "Vista/NetworkWiFi2-48.png"
+      }
+    ],
+    "NetworkWiFiLimited2": [
+      {
+        "Size": 16,
+        "Path": "Vista/NetworkLimited-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/NetworkLimited-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/NetworkLimited-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkLimited-32.png"
+      }
+    ],
+    "NetworkWiFi3": [
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkWiFi3-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "Vista/NetworkWiFi3-48.png"
+      }
+    ],
+    "NetworkWiFiLimited3": [
+      {
+        "Size": 16,
+        "Path": "Vista/NetworkLimited-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/NetworkLimited-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/NetworkLimited-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkLimited-32.png"
+      }
+    ],
+    "NetworkWiFi4": [
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkWiFi4-32.png"
+      },
+      {
+        "Size": 48,
+        "Path": "Vista/NetworkWiFi4-48.png"
+      }
+    ],
+    "NetworkWiFiLimited4": [
+      {
+        "Size": 16,
+        "Path": "Vista/NetworkLimited-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/NetworkLimited-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/NetworkLimited-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkLimited-32.png"
+      }
+    ],
+    "NetworkOther": [
+      {
+        "Size": 16,
+        "Path": "Vista/NetworkOnline-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Vista/NetworkOnline-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/NetworkOnline-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/NetworkOnline-32.png"
+      }
+    ],
+    "Hardware": [
+      {
+        "Size": 16,
+        "Path": "Vista/Hardware-16.png"
+      },
+      {
+        "Size": 22,
+        "Path": "Vista/Hardware-22.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Vista/Hardware-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Vista/Hardware-32.png"
+      }
+    ]
+  },
+  "Win7": {
+    "VolumeMuted": [
+      {
+        "Size": 16,
+        "Path": "Win7/VolumeMuted-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/VolumeMuted-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/VolumeMuted-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/VolumeMuted-32.png"
+      }
+    ],
+    "VolumeZero": [
+      {
+        "Size": 16,
+        "Path": "Win7/VolumeZero-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/VolumeZero-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/VolumeZero-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/VolumeZero-32.png"
+      }
+    ],
+    "VolumeLow": [
+      {
+        "Size": 16,
+        "Path": "Win7/VolumeLow-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/VolumeLow-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/VolumeLow-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/VolumeLow-32.png"
+      }
+    ],
+    "VolumeMedium": [
+      {
+        "Size": 16,
+        "Path": "Win7/VolumeMedium-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/VolumeMedium-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/VolumeMedium-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/VolumeMedium-32.png"
+      }
+    ],
+    "VolumeHigh": [
+      {
+        "Size": 16,
+        "Path": "Win7/VolumeHigh-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/VolumeHigh-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/VolumeHigh-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/VolumeHigh-32.png"
+      }
+    ],
+    "VolumeUnavailable": [
+      {
+        "Size": 16,
+        "Path": "Win7/VolumeUnavailable-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/VolumeUnavailable-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/VolumeUnavailable-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/VolumeUnavailable-32.png"
+      }
+    ],
+    "PowerBattery0": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerBattery0-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerBattery0-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerBattery0-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerBattery0-32.png"
+      }
+    ],
+    "PowerLow0": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerLow0-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerLow0-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerLow0-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerLow0-32.png"
+      }
+    ],
+    "PowerCritical0": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCritical0-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCritical0-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCritical0-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCritical0-32.png"
+      }
+    ],
+    "PowerCharging0": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCharging0-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCharging0-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCharging0-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCharging0-32.png"
+      }
+    ],
+    "PowerAc0": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerAc0-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerAc0-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerAc0-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerAc0-32.png"
+      }
+    ],
+    "PowerBattery1": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerBattery1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerBattery1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerBattery1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerBattery1-32.png"
+      }
+    ],
+    "PowerLow1": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerLow1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerLow1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerLow1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerLow1-32.png"
+      }
+    ],
+    "PowerCritical1": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCritical1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCritical1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCritical1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCritical1-32.png"
+      }
+    ],
+    "PowerCharging1": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCharging1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCharging1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCharging1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCharging1-32.png"
+      }
+    ],
+    "PowerAc1": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerAc1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerAc1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerAc1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerAc1-32.png"
+      }
+    ],
+    "PowerBattery2": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerBattery2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerBattery2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerBattery2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerBattery2-32.png"
+      }
+    ],
+    "PowerLow2": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerLow2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerLow2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerLow2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerLow2-32.png"
+      }
+    ],
+    "PowerCritical2": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCritical2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCritical2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCritical2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCritical2-32.png"
+      }
+    ],
+    "PowerCharging2": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCharging2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCharging2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCharging2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCharging2-32.png"
+      }
+    ],
+    "PowerAc2": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerAc2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerAc2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerAc2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerAc2-32.png"
+      }
+    ],
+    "PowerBattery3": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerBattery3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerBattery3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerBattery3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerBattery3-32.png"
+      }
+    ],
+    "PowerLow3": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerLow3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerLow3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerLow3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerLow3-32.png"
+      }
+    ],
+    "PowerCritical3": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCritical3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCritical3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCritical3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCritical3-32.png"
+      }
+    ],
+    "PowerCharging3": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCharging3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCharging3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCharging3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCharging3-32.png"
+      }
+    ],
+    "PowerAc3": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerAc3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerAc3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerAc3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerAc3-32.png"
+      }
+    ],
+    "PowerBattery4": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerBattery4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerBattery4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerBattery4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerBattery4-32.png"
+      }
+    ],
+    "PowerLow4": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerLow4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerLow4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerLow4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerLow4-32.png"
+      }
+    ],
+    "PowerCritical4": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCritical4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCritical4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCritical4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCritical4-32.png"
+      }
+    ],
+    "PowerCharging4": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCharging4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCharging4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCharging4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCharging4-32.png"
+      }
+    ],
+    "PowerAc4": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerAc4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerAc4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerAc4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerAc4-32.png"
+      }
+    ],
+    "PowerBattery5": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerBattery5-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerBattery5-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerBattery5-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerBattery5-32.png"
+      }
+    ],
+    "PowerLow5": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerLow5-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerLow5-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerLow5-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerLow5-32.png"
+      }
+    ],
+    "PowerCritical5": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCritical5-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCritical5-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCritical5-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCritical5-32.png"
+      }
+    ],
+    "PowerCharging5": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCharging5-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCharging5-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCharging5-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCharging5-32.png"
+      }
+    ],
+    "PowerAc5": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerAc5-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerAc5-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerAc5-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerAc5-32.png"
+      }
+    ],
+    "PowerBattery6": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerBattery6-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerBattery6-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerBattery6-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerBattery6-32.png"
+      }
+    ],
+    "PowerLow6": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerLow6-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerLow6-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerLow6-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerLow6-32.png"
+      }
+    ],
+    "PowerCritical6": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCritical6-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCritical6-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCritical6-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCritical6-32.png"
+      }
+    ],
+    "PowerCharging6": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCharging6-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCharging6-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCharging6-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCharging6-32.png"
+      }
+    ],
+    "PowerAc6": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerAc6-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerAc6-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerAc6-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerAc6-32.png"
+      }
+    ],
+    "PowerBattery7": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerBattery7-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerBattery7-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerBattery7-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerBattery7-32.png"
+      }
+    ],
+    "PowerLow7": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerLow7-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerLow7-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerLow7-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerLow7-32.png"
+      }
+    ],
+    "PowerCritical7": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCritical7-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCritical7-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCritical7-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCritical7-32.png"
+      }
+    ],
+    "PowerCharging7": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCharging7-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCharging7-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCharging7-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCharging7-32.png"
+      }
+    ],
+    "PowerAc7": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerAc7-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerAc7-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerAc7-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerAc7-32.png"
+      }
+    ],
+    "PowerBattery8": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerBattery8-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerBattery8-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerBattery8-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerBattery8-32.png"
+      }
+    ],
+    "PowerLow8": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerLow8-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerLow8-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerLow8-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerLow8-32.png"
+      }
+    ],
+    "PowerCritical8": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCritical8-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCritical8-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCritical8-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCritical8-32.png"
+      }
+    ],
+    "PowerCharging8": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerCharging8-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerCharging8-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerCharging8-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerCharging8-32.png"
+      }
+    ],
+    "PowerAc8": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerAc8-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerAc8-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerAc8-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerAc8-32.png"
+      }
+    ],
+    "PowerUnknown": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerUnknown-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerUnknown-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerUnknown-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerUnknown-32.png"
+      }
+    ],
+    "PowerUnavailable": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerUnavailable-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerUnavailable-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerUnavailable-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerUnavailable-32.png"
+      }
+    ],
+    "PowerAcOnly": [
+      {
+        "Size": 16,
+        "Path": "Win7/PowerAcOnly-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/PowerAcOnly-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/PowerAcOnly-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/PowerAcOnly-32.png"
+      }
+    ],
+    "NetworkOnline": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkOnline-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkOnline-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkOnline-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkOnline-32.png"
+      }
+    ],
+    "NetworkLimited": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkLimited-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkLimited-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkLimited-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkLimited-32.png"
+      }
+    ],
+    "NetworkDisconnected": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkDisconnected-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkDisconnected-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkDisconnected-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkDisconnected-32.png"
+      }
+    ],
+    "NetworkWiFi1": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkWiFi1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkWiFi1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkWiFi1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkWiFi1-32.png"
+      }
+    ],
+    "NetworkWiFiLimited1": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkWiFiLimited1-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkWiFiLimited1-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkWiFiLimited1-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkWiFiLimited1-32.png"
+      }
+    ],
+    "NetworkWiFi2": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkWiFi2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkWiFi2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkWiFi2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkWiFi2-32.png"
+      }
+    ],
+    "NetworkWiFiLimited2": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkWiFiLimited2-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkWiFiLimited2-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkWiFiLimited2-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkWiFiLimited2-32.png"
+      }
+    ],
+    "NetworkWiFi3": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkWiFi3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkWiFi3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkWiFi3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkWiFi3-32.png"
+      }
+    ],
+    "NetworkWiFiLimited3": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkWiFiLimited3-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkWiFiLimited3-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkWiFiLimited3-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkWiFiLimited3-32.png"
+      }
+    ],
+    "NetworkWiFi4": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkWiFi4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkWiFi4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkWiFi4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkWiFi4-32.png"
+      }
+    ],
+    "NetworkWiFiLimited4": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkWiFiLimited4-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkWiFiLimited4-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkWiFiLimited4-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkWiFiLimited4-32.png"
+      }
+    ],
+    "NetworkOther": [
+      {
+        "Size": 16,
+        "Path": "Win7/NetworkOnline-16.png"
+      },
+      {
+        "Size": 20,
+        "Path": "Win7/NetworkOnline-20.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/NetworkOnline-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/NetworkOnline-32.png"
+      }
+    ],
+    "Hardware": [
+      {
+        "Size": 16,
+        "Path": "Win7/Hardware-16.png"
+      },
+      {
+        "Size": 22,
+        "Path": "Win7/Hardware-22.png"
+      },
+      {
+        "Size": 24,
+        "Path": "Win7/Hardware-24.png"
+      },
+      {
+        "Size": 32,
+        "Path": "Win7/Hardware-32.png"
+      }
+    ]
+  }
+}

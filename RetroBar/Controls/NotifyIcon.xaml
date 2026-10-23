@@ -13,9 +13,9 @@
                 MouseLeave="NotifyIcon_OnMouseLeave"
                 MouseMove="NotifyIcon_OnMouseMove"
                 PreviewMouseWheel="NotifyIcon_OnPreviewMouseWheel">
-            <Image Source="{Binding Path=Icon, Mode=OneWay}"
+            <local:ThemedNotifyIconImage TrayIcon="{Binding}"
                    Focusable="True"
-                   Name="NotifyIconImage"
+                   x:Name="NotifyIconImage"
                    Style="{DynamicResource NotifyIcon}" />
         </Border>
         <local:NotifyBalloon x:Name="BalloonControl" />

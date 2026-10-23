@@ -21,9 +21,55 @@ Local integration fixes:
 - Mark the version with the `shizuku` prerelease suffix.
 - Add Simplified Chinese labels for the new network icon tooltip and menu.
 
-The new network icon uses modern Windows glyphs. Network, volume, battery,
-and third-party tray icons are NOT replaced with Windows 7 artwork.
-No additional Windows 7 system DLLs are required for this build.
+## Themed system tray icons
+
+The **Match system icons to theme** checkbox is in Properties > Notification
+area and is on by default. Toggling it restores/replaces the original images
+immediately, without restarting. The setting is localized in English and
+Simplified Chinese.
+
+| Taskbar theme | Icon pack |
+| --- | --- |
+| Windows 98 and earlier, System classic, older custom classic themes | Windows 98 SE |
+| Windows Me, Windows 2000 | Windows 2000 SP4 |
+| All XP themes, System XP, Watercolor/Whistler | Windows XP SP3 |
+| Longhorn, Vista Aero/Basic/Classic, System Vista | Windows Vista SP2 |
+| Windows7; newer modern custom styles | Windows 7 SP1 |
+
+Custom theme names use the nearest historical style. Unrecognized glass themes
+use Vista; unrecognized classic themes use Win98. A custom theme may specify a
+`SystemNotifyIconTheme` string resource (`Win98`, `Win2000`, `WinXP`, `Vista`,
+`Win7`). Explicitly pre-98 theme names always use Win98.
+
+Only the Windows network, volume, power/battery, and safely-remove-hardware GUIDs
+are replaced. Third-party icons and unsupported system icons retain their own
+images. Callback windows, messages, tooltips, visibility, ordering, and mouse
+actions are unchanged. The customization dialog shows the same replacement
+images. Colored themed images are never passed through the grayscale inversion
+shader; their inversion checkboxes are disabled while replacement is on.
+
+Network status uses the existing event-driven monitor, shared with the synthetic
+Win11 network icon. Core Audio callbacks track mute, volume, and default-device
+changes without changing audio settings. Windows power notifications update
+battery/AC/charging state. Unavailable status or assets fall back to native images.
+Old packs use their native coarse volume/battery levels; Win98/2000 approximate
+Wi-Fi with their original connection icons because they have no matching Wi-Fi
+signal set. An unavailable WLAN signal query does not imply maximum signal.
+Win98/2000 have no modern Internet-access warning badge; their generic connected
+image and the original status tooltip are retained for local-only connectivity.
+
+All 587 selected image variants are embedded, so installed builds need no old
+system DLLs, mounted installation media, or K: drive. Only original icon images
+and cropped/composited native battery-strip cells are bundled, never executable
+Windows DLLs. Resource IDs and source hashes are in `Resources/TrayIcons/sources.json`.
+The supplied resources remain their original owners' material, for this personal
+build. Intermediate extraction/analysis data stays in `K:\tmp\RetroBar-icons-20261023`.
+
+Resource preparation, when the original extraction/cache is available:
+
+```powershell
+python tools/prepare_tray_icon_assets.py --source artifacts/system-icon-resources --cache K:/tmp/RetroBar-icons-20261023 --output RetroBar/Resources/TrayIcons
+```
 
 ## Use
 
@@ -48,7 +94,8 @@ Requirements: Windows and the .NET 10 SDK. Run from this checkout:
 ./build-custom.ps1
 ```
 
-The executable, license, build metadata, and ZIP are written beneath `artifacts`.
+The executable, license, build metadata, and ZIP are written beneath `artifacts`
+under `RetroBar-Shizuku-ThemedIcons-...`, alongside the older Win7-only package.
 The script only cleans its own selected package directory inside `artifacts`.
 
 For a smaller package that requires an installed .NET Desktop Runtime:
@@ -75,6 +122,13 @@ seal its styles, render representative control templates at 100/150/200%, render
 nine network icon states, check network state selection and native layouts, and
 initialize/dispose the network monitor. They do not launch RetroBar or replace
 the desktop taskbar.
+
+The themed-icon tests cover every bundled theme, all icon states and seven pixel
+sizes (1,547 combinations), original-image fallback, live theme/checkbox changes,
+third-party preservation, native callback-data preservation, image subscription
+cleanup, shared network-monitor ownership, live read-only Core Audio and power,
+English/Chinese settings layout, and five icon packs at 100/150/200% rendering.
+Test setting changes are isolated in-process with persistence disabled.
 
 The following larger changes were deliberately left out: grouped tasks (#1433),
 per-monitor/layout redesign (#1503), and low-level mouse-hook replacement (#1413).

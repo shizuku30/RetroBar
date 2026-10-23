@@ -42,6 +42,8 @@
     <None Remove="Resources\start9x.png" />
     <None Remove="Languages\English.xaml" />
     <None Remove="Themes\System.xaml" />
+    <None Remove="Resources\TrayIcons\**\*.png" />
+    <None Remove="Resources\TrayIcons\catalog.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,6 +60,8 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\start9x.png" />
+    <Resource Include="Resources\TrayIcons\**\*.png" />
+    <Resource Include="Resources\TrayIcons\catalog.json" />
   </ItemGroup>
 
 </Project>

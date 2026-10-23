@@ -46,13 +46,14 @@ namespace RetroBar.Utilities
         private readonly HwndSource _messageWindow;
         private readonly NotifyIcon _notifyIcon;
         private readonly GlyphTypeface _glyphTypeface;
+        private readonly bool _ownsNetworkMonitor;
 
         /// <summary>
         /// Windows 11 24H2 removed the legacy network notification icon, so we provide our own.
         /// </summary>
         public static bool IsNeeded => EnvironmentHelper.IsWindows1124H2OrBetter && !GroupPolicyHelper.HideScaNetwork;
 
-        public NetworkNotifyIcon(NotificationArea notificationArea)
+        public NetworkNotifyIcon(NotificationArea notificationArea, NetworkMonitor networkMonitor = null)
         {
             Guid networkGuid = new Guid(NotificationArea.NETWORK_GUID);
 
@@ -73,7 +74,8 @@ namespace RetroBar.Utilities
             });
             _messageWindow.AddHook(WndProc);
 
-            _networkMonitor = new NetworkMonitor();
+            _ownsNetworkMonitor = networkMonitor == null;
+            _networkMonitor = networkMonitor ?? new NetworkMonitor();
             _networkMonitor.StateChanged += NetworkMonitor_StateChanged;
 
             // Using the network GUID allows the existing visibility, order, and invert settings to apply to this icon.
@@ -310,7 +312,7 @@ namespace RetroBar.Utilities
             if (_networkMonitor != null)
             {
                 _networkMonitor.StateChanged -= NetworkMonitor_StateChanged;
-                _networkMonitor.Dispose();
+                if (_ownsNetworkMonitor) _networkMonitor.Dispose();
             }
 
             if (IsOwnIcon())

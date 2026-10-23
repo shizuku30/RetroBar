@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:converters="clr-namespace:RetroBar.Converters"
+        xmlns:controls="clr-namespace:RetroBar.Controls"
         xmlns:Settings="clr-namespace:RetroBar.Utilities"
         Title="{DynamicResource customize_notifications}"
         Height="406"
@@ -76,8 +77,8 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <DockPanel>
-                                        <Image Source="{Binding Icon}"
-                                               Loaded="Icon_Loaded"
+                                        <controls:ThemedNotifyIconImage TrayIcon="{Binding}"
+                                               PreviewInversion="True"
                                                Width="16"
                                                Height="16"
                                                Margin="0,0,3,0"
@@ -148,6 +149,7 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <CheckBox IsChecked="{Binding Mode=OneWay, Converter={StaticResource notifyIconCanInvertConverter}}"
+                                              IsEnabled="{Binding Converter={StaticResource notifyIconCanInvertConverter}, ConverterParameter=Enabled}"
                                               Checked="InvertCheckBox_Checked"
                                               Unchecked="InvertCheckBox_Unchecked" />
                                 </DataTemplate>

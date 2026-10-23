@@ -391,6 +391,9 @@
                     </Border>
                     <GroupBox Header="{DynamicResource general_heading}">
                         <StackPanel Orientation="Vertical">
+                            <CheckBox IsChecked="{Binding Source={x:Static Settings:Settings.Instance}, Path=UseThemeSystemIcons, UpdateSourceTrigger=PropertyChanged}">
+                                <Label Content="{DynamicResource use_theme_system_icons}" />
+                            </CheckBox>
                             <CheckBox x:Name="cbShowInputLanguage"
                                       IsChecked="{Binding Source={x:Static Settings:Settings.Instance}, Path=ShowInputLanguage, UpdateSourceTrigger=PropertyChanged}">
                                 <Label Content="{DynamicResource show_input_language}" />

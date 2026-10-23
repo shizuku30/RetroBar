@@ -24,6 +24,7 @@ internal static class Program
         string root = Path.GetFullPath(args.Length > 0 ? args[0] : ".");
         string themePath = Path.Combine(root, "RetroBar", "Themes", "Windows7.xaml");
         Application app = new Application { ShutdownMode = ShutdownMode.OnExplicitShutdown };
+        app.Resources["menuTextRenderingModeConverter"] = new RetroBar.Converters.BoolToTextRenderingModeConverter();
         app.Resources.MergedDictionaries.Add(new ResourceDictionary
         {
             Source = new Uri("/RetroBar;component/Languages/English.xaml", UriKind.Relative)
@@ -47,6 +48,13 @@ internal static class Program
             monitor.Dispose();
             monitor.Refresh();
         });
+        Run("Every built-in theme and pre-98 fallback mapping", () => SystemIconTests.CheckThemeMapping(root));
+        Run("Embedded themed-icon assets at seven pixel sizes", SystemIconTests.CheckAssets);
+        Run("Network, volume, battery and unavailable state mappings", SystemIconTests.CheckStates);
+        Run("Live Core Audio, power and shared-monitor ownership", SystemIconTests.CheckLiveMonitors);
+        Run("Live theme toggle, third-party fallback and view lifecycle", () => SystemIconTests.CheckViewUpdates(app));
+        Run("Notification-area settings layout without desktop side effects", () => SystemIconTests.CheckSettingsLayout(app, root));
+        Run("Five tray styles rendered at 100/150/200 percent", () => SystemIconTests.RenderPreviews(root));
 
         app.Shutdown();
         Console.WriteLine($"Smoke tests: {tests - failures} passed, {failures} failed.");

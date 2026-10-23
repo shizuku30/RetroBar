@@ -19,7 +19,7 @@ try {
         if ($LASTEXITCODE -ne 0) { throw 'Smoke tests failed.' }
     }
 
-    $packageName = "RetroBar-Shizuku-Win7-$Runtime-$Framework"
+    $packageName = "RetroBar-Shizuku-ThemedIcons-$Runtime-$Framework"
     $artifactsRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot 'artifacts'))
     $null = New-Item -ItemType Directory -Path $artifactsRoot -Force
     if ((Get-Item -LiteralPath $artifactsRoot).Attributes -band [System.IO.FileAttributes]::ReparsePoint) {

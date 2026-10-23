@@ -27,7 +27,8 @@ namespace RetroBar
 
         private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(Settings.InvertNotifyIcons) || e.PropertyName == nameof(Settings.NotifyIconBehaviors))
+            if (e.PropertyName == nameof(Settings.InvertNotifyIcons) || e.PropertyName == nameof(Settings.NotifyIconBehaviors) ||
+                e.PropertyName == nameof(Settings.UseThemeSystemIcons) || e.PropertyName == nameof(Settings.Theme))
             {
                 // Reload icons
                 DataContext = null;
@@ -92,30 +93,5 @@ namespace RetroBar
             icon.SetCanInvert(false);
         }
 
-        private void Icon_Loaded(object sender, RoutedEventArgs e)
-        {
-            var image = sender as Image;
-            var notifyIcon = image.DataContext as NotifyIcon;
-            applyEffects(image, notifyIcon);
-        }
-
-        private void applyEffects(Image NotifyIconImage, NotifyIcon TrayIcon)
-        {
-            if (TrayIcon == null)
-            {
-                return;
-            }
-
-            if (!TrayIcon.CanInvert())
-            {
-                NotifyIconImage.Effect = null;
-                return;
-            }
-
-            if (NotifyIconImage.Effect == null)
-            {
-                NotifyIconImage.Effect = new InvertEffect();
-            }
-        }
     }
 }

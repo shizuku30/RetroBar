@@ -1,5 +1,6 @@
 ﻿using ManagedShell.WindowsTray;
 using RetroBar.Extensions;
+using RetroBar.Utilities;
 using System;
 using System.Windows.Data;
 
@@ -12,6 +13,8 @@ namespace RetroBar.Converters
         {
             if (value is NotifyIcon icon)
             {
+                if (parameter as string == "Enabled")
+                    return !Settings.Instance.UseThemeSystemIcons || !ThemedSystemIcons.Supports(icon.GUID);
                 return icon.CanInvert();
             }
 

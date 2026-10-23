@@ -150,6 +150,7 @@
     <s:String x:Key="show_desktop">显示桌面(_S)</s:String>
     <s:String x:Key="peek_at_desktop">窥视桌面(_P)</s:String>
 
+    <s:String x:Key="use_theme_system_icons">系统图标跟随主题(_M)</s:String>
     <s:String x:Key="network_internet_access">Internet 访问</s:String>
     <s:String x:Key="network_no_internet_access">无 Internet 访问</s:String>
     <s:String x:Key="network_not_connected">未连接</s:String>
