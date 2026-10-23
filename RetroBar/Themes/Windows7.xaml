@@ -1688,68 +1688,6 @@
                              comes from the NotifyIcon/Tray styles (right
                              margin per icon + group padding) -->
                         <ContentPresenter x:Name="Content" />
-                        <!-- REAL tray<->overflow movement in pure XAML:
-                             a small pin overlay appears on icon hover.
-                             The checkbox writes NotifyIcon.IsPinned (an
-                             already-existing public ManagedShell API) ->
-                             calls the official Pin()/Unpin() -> the icon
-                             moves to the other zone immediately. -->
-                        <ToggleButton x:Name="PinToggle"
-                                      Width="9"
-                                      Height="9"
-                                      HorizontalAlignment="Right"
-                                      VerticalAlignment="Top"
-                                      Margin="0,1,1,0"
-                                      Opacity="0"
-                                      ToolTip="Sposta fra tray e overflow (pin/unpin)"
-                                      IsChecked="{Binding IsPinned, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                    <ToggleButton.Style>
-                                        <Style TargetType="ToggleButton">
-                                            <Setter Property="Focusable"
-                                                    Value="False" />
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="ToggleButton">
-                                                        <Border x:Name="PinBg"
-                                                                Background="Transparent"
-                                                                CornerRadius="2"
-                                                                Padding="1">
-                                                            <Path Data="M1.5,0.5 h5 v3.5 l-1,1 v2.5 l-1.5,1.5 -1.5,-1.5 v-2.5 l-1,-1 z"
-                                                                  Stretch="Uniform">
-                                                                <Path.Fill>
-                                                                    <SolidColorBrush Color="#FF4A4A4A" />
-                                                                </Path.Fill>
-                                                                <Path.LayoutTransform>
-                                                                    <ScaleTransform ScaleX="-1" />
-                                                                </Path.LayoutTransform>
-                                                            </Path>
-                                                        </Border>
-                                                        <ControlTemplate.Triggers>
-                                                            <Trigger Property="IsMouseOver"
-                                                                     Value="True">
-                                                                <Setter TargetName="PinBg"
-                                                                        Property="Background"
-                                                                        Value="#406EA5D2" />
-                                                            </Trigger>
-                                                            <Trigger Property="IsPressed"
-                                                                     Value="True">
-                                                                <Setter TargetName="PinBg"
-                                                                        Property="Background"
-                                                                        Value="#736EA5D2" />
-                                                            </Trigger>
-                                                            <Trigger Property="IsChecked"
-                                                                     Value="True">
-                                                                <Setter TargetName="PinBg"
-                                                                        Property="Background"
-                                                                        Value="#66000000" />
-                                                            </Trigger>
-                                                        </ControlTemplate.Triggers>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </ToggleButton.Style>
-                        </ToggleButton>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver"
@@ -1761,10 +1699,6 @@
                                                          Storyboard.TargetProperty="Opacity"
                                                          To="1"
                                                          Duration="0:0:0.12" />
-                                        <DoubleAnimation Storyboard.TargetName="PinToggle"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0.9"
-                                                         Duration="0:0:0.1" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -1773,11 +1707,6 @@
                                     <Storyboard>
                                         <DoubleAnimation FillBehavior="Stop"
                                                          Storyboard.TargetName="HoverTileImg"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0"
-                                                         Duration="0:0:0.25" />
-                                        <DoubleAnimation FillBehavior="Stop"
-                                                         Storyboard.TargetName="PinToggle"
                                                          Storyboard.TargetProperty="Opacity"
                                                          To="0"
                                                          Duration="0:0:0.25" />
@@ -1868,62 +1797,6 @@
                                                                 CornerRadius="2">
                                                             <ContentPresenter Margin="8,7,4,6" />
                                                         </Border>
-                                                        <ToggleButton x:Name="PinToggle"
-                                                                      Width="9"
-                                                                      Height="9"
-                                                                      HorizontalAlignment="Right"
-                                                                      VerticalAlignment="Top"
-                                                                      Margin="0,1,1,0"
-                                                                      Opacity="0"
-                                                                      ToolTip="Sposta fra tray e overflow (pin/unpin)"
-                                                                      IsChecked="{Binding IsPinned, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                    <ToggleButton.Style>
-                                        <Style TargetType="ToggleButton">
-                                            <Setter Property="Focusable"
-                                                    Value="False" />
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="ToggleButton">
-                                                        <Border x:Name="PinBg"
-                                                                Background="Transparent"
-                                                                CornerRadius="2"
-                                                                Padding="1">
-                                                            <Path Data="M1.5,0.5 h5 v3.5 l-1,1 v2.5 l-1.5,1.5 -1.5,-1.5 v-2.5 l-1,-1 z"
-                                                                  Stretch="Uniform">
-                                                                <Path.Fill>
-                                                                    <SolidColorBrush Color="#FF4A4A4A" />
-                                                                </Path.Fill>
-                                                                <Path.LayoutTransform>
-                                                                    <ScaleTransform ScaleX="-1" />
-                                                                </Path.LayoutTransform>
-                                                            </Path>
-                                                        </Border>
-                                                        <ControlTemplate.Triggers>
-                                                            <Trigger Property="IsMouseOver"
-                                                                     Value="True">
-                                                                <Setter TargetName="PinBg"
-                                                                        Property="Background"
-                                                                        Value="#406EA5D2" />
-                                                            </Trigger>
-                                                            <Trigger Property="IsPressed"
-                                                                     Value="True">
-                                                                <Setter TargetName="PinBg"
-                                                                        Property="Background"
-                                                                        Value="#736EA5D2" />
-                                                            </Trigger>
-                                                            <Trigger Property="IsChecked"
-                                                                     Value="True">
-                                                                <Setter TargetName="PinBg"
-                                                                        Property="Background"
-                                                                        Value="#66000000" />
-                                                            </Trigger>
-                                                        </ControlTemplate.Triggers>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </ToggleButton.Style>
-                                                        </ToggleButton>
                                                         </Grid>
                                                         <ControlTemplate.Triggers>
                                                             <Trigger Property="IsMouseOver"
@@ -1934,9 +1807,6 @@
                                                                 <Setter TargetName="HoverFrame"
                                                                         Property="BorderBrush"
                                                                         Value="#666EA5D2" />
-                                                                <Setter TargetName="PinToggle"
-                                                                        Property="Opacity"
-                                                                        Value="0.9" />
                                                             </Trigger>
                                                         </ControlTemplate.Triggers>
                                                     </ControlTemplate>
@@ -2774,10 +2644,8 @@
       Visual and interactive part: ALL in declarative XAML.
       CONSTRAINT HONORED: no modified RetroBar build.
 
-      ICON MOVEMENT (real, zero code): pin/unpin overlay that appears
-      on icon hover (tray and popup). Writes NotifyIcon.IsPinned via
-      TwoWay binding -> calls the public ManagedShell Pin()/Unpin() API
-      already present in RetroBar. The icon moves to the other zone immediately.
+      Icon visibility is managed by RetroBar's notification settings;
+      no pin/unpin overlays are added to the icons.
 
       The C# snippets below remain EMBEDDED only as archival reference
       (NOT required for current use): they would be the minimal code
@@ -2790,7 +2658,7 @@
       TARGET CONTRACT  ==  element name -> behavioral hook
         OverflowToggle   : ToggleButton; opens/closes OverflowPopup (pure XAML)
         OverflowPopup    : Popup; IsOpen <-> OverflowToggle.IsChecked (TwoWay)
-        OverflowIcons    : ItemsControl 3xN grid; pin overlay (moves icons)
+        OverflowIcons    : ItemsControl 3xN grid
         CustomizeLink    : TextBlock footer (visual; C# hook = reference below)
       =========================================================================
 

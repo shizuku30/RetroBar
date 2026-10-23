@@ -20,6 +20,7 @@ Local integration fixes:
 - Use the included start-orb sprite at high DPI, rather than a nonexistent scaled file.
 - Mark the version with the `shizuku` prerelease suffix.
 - Add Simplified Chinese labels for the new network icon tooltip and menu.
+- Remove the Win7 theme's non-native hover pin buttons in both the tray and overflow popup; keep the normal hover highlights.
 
 ## Themed system tray icons
 

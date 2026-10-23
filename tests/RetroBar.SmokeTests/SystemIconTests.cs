@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -153,6 +154,89 @@ internal static class SystemIconTests
             Assert(image.Source == update, "Unloaded image remained subscribed to its model.");
         }
         finally { app.Resources.Remove(TrayIconThemeManager.ResourceKey); }
+    }
+
+    public static void CheckWin7Hover(Application app, string root)
+    {
+        string path = Path.Combine(root, "RetroBar", "Themes", "Windows7.xaml");
+        XDocument document = XDocument.Load(path);
+        XNamespace presentation = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
+        XElement[] templates = document.Descendants(presentation + "ControlTemplate")
+            .Where(element => (string)element.Attribute("TargetType") == "{x:Type controls:NotifyIcon}").ToArray();
+        Assert(templates.Length == 2, "The tray and overflow icon templates must both be checked.");
+        Assert(templates.All(template => !template.Descendants(presentation + "ToggleButton").Any()), "A pin button still overlays a tray icon.");
+        Assert(!document.Descendants().Attributes().Any(attribute => attribute.Value.Contains("PinToggle")), "A pin-button animation or setter remains.");
+
+        using IsolatedSettings settings = new IsolatedSettings();
+        settings.Set("Theme", "Windows7");
+        ResourceDictionary theme = new ResourceDictionary { Source = new Uri(path) };
+        app.Resources.MergedDictionaries.Add(theme);
+        using TrayIconThemeManager manager = new TrayIconThemeManager();
+        app.Resources[TrayIconThemeManager.ResourceKey] = manager;
+        try
+        {
+            Style trayStyle = (Style)app.FindResource(typeof(RetroBar.Controls.NotifyIcon));
+            RetroBar.Controls.NotifyIconList list = new RetroBar.Controls.NotifyIconList
+            {
+                Style = (Style)app.FindResource(typeof(RetroBar.Controls.NotifyIconList))
+            };
+            list.ApplyTemplate();
+            Popup popup = list.Template.FindName("OverflowPopup", list) as Popup;
+            Assert(popup != null && !popup.IsOpen, "The overflow template was not loaded without opening a window.");
+            Style popupStyle = ((popup.Child as Border)?.Child as Border)?.Resources["PopupNotifyIcon"] as Style;
+            Assert(popupStyle != null, "The overflow icon style is missing.");
+
+            StackPanel samples = new StackPanel { Background = new SolidColorBrush(Color.FromRgb(49, 65, 70)) };
+            foreach (bool overflow in new[] { false, true })
+            {
+                StackPanel row = new StackPanel { Orientation = Orientation.Horizontal, Height = 52 };
+                row.Children.Add(new TextBlock { Text = overflow ? "Overflow" : "Tray", Width = 76, Margin = new Thickness(8, 18, 0, 0), Foreground = Brushes.White });
+                foreach (bool hover in new[] { false, true })
+                foreach (Guid guid in new[] { Hardware, Network })
+                {
+                    NotifyIcon model = new NotifyIcon(null) { GUID = guid, Title = "Hover regression" };
+                    RetroBar.Controls.NotifyIcon icon = new RetroBar.Controls.NotifyIcon
+                    {
+                        Style = overflow ? popupStyle : trayStyle, DataContext = model,
+                        VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Center
+                    };
+                    Border cell = new Border { Child = icon, Width = 48, Height = 48 };
+                    row.Children.Add(cell);
+                    cell.Measure(new Size(48, 48));
+                    cell.Arrange(new Rect(0, 0, 48, 48));
+                    icon.ApplyTemplate();
+                    Assert(icon.Template.FindName("PinToggle", icon) == null && !Descendants(icon).OfType<ToggleButton>().Any(), "An icon still contains a hover button.");
+                    if (overflow)
+                    {
+                        Border frame = icon.Template.FindName("HoverFrame", icon) as Border;
+                        Assert(frame != null, "The normal overflow hover frame was lost.");
+                        if (hover)
+                        {
+                            frame.Background = new SolidColorBrush(Color.FromArgb(38, 110, 165, 210));
+                            frame.BorderBrush = new SolidColorBrush(Color.FromArgb(102, 110, 165, 210));
+                        }
+                    }
+                    else
+                    {
+                        Image highlight = icon.Template.FindName("HoverTileImg", icon) as Image;
+                        Assert(highlight != null && !highlight.IsHitTestVisible, "The non-interactive tray hover highlight was lost.");
+                        if (hover) highlight.Opacity = 1;
+                    }
+                    Assert(!model.IsPinned, "Rendering a hover changed notification visibility.");
+                }
+                samples.Children.Add(row);
+            }
+            samples.Measure(new Size(320, 120));
+            samples.Arrange(new Rect(samples.DesiredSize));
+            samples.UpdateLayout();
+            SaveVisual(samples, (int)Math.Ceiling(samples.DesiredSize.Width), (int)Math.Ceiling(samples.DesiredSize.Height),
+                Path.Combine(root, "artifacts", "smoke", $"net{Environment.Version.Major}", "win7-tray-hover.png"));
+        }
+        finally
+        {
+            app.Resources.Remove(TrayIconThemeManager.ResourceKey);
+            app.Resources.MergedDictionaries.Remove(theme);
+        }
     }
 
     public static void CheckSettingsLayout(Application app, string root)

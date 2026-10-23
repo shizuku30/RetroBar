@@ -36,6 +36,7 @@ internal static class Program
 
         Run("Win7 image references and image decoding", () => CheckImages(themePath));
         Run("Win7 loose XAML loading and control templates", () => CheckTheme(app, themePath, root));
+        Run("Win7 tray and overflow hover without pin overlays", () => SystemIconTests.CheckWin7Hover(app, root));
         Run("Network glyph rendering without creating a tray icon", CheckNetworkGlyphs);
         Run("Network signal thresholds and adapter selection", CheckNetworkSelection);
         Run("Native network structure layouts", CheckNativeLayouts);
