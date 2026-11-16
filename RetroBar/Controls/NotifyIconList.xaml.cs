@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Threading;
 using Tray = ManagedShell.WindowsTray;
@@ -25,6 +26,7 @@ namespace RetroBar.Controls
         private ObservableCollection<Tray.NotifyIcon> promotedIcons = new ObservableCollection<Tray.NotifyIcon>();
         private NotifyIconDropHandler dropHandler;
         private ListCollectionView collectionView;
+        private ButtonBase _customizeLink;
 
         public static DependencyProperty NotificationAreaProperty = DependencyProperty.Register(nameof(NotificationArea), typeof(NotificationArea), typeof(NotifyIconList), new PropertyMetadata(NotificationAreaChangedCallback));
 
@@ -37,6 +39,40 @@ namespace RetroBar.Controls
         public NotifyIconList()
         {
             InitializeComponent();
+        }
+
+        public override void OnApplyTemplate()
+        {
+            if (_customizeLink != null)
+            {
+                _customizeLink.Click -= CustomizeNotifications_OnClick;
+            }
+
+            base.OnApplyTemplate();
+
+            _customizeLink = GetTemplateChild("CustomizeLink") as ButtonBase;
+            if (_customizeLink != null)
+            {
+                _customizeLink.Click += CustomizeNotifications_OnClick;
+            }
+        }
+
+        private void CustomizeNotifications_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (NotificationArea == null) return;
+
+            Window host = Window.GetWindow(this);
+            Point position = host is Taskbar taskbar
+                ? new Point(taskbar.Screen.WorkingArea.Left / taskbar.DpiScale, taskbar.Screen.WorkingArea.Top / taskbar.DpiScale)
+                : new Point(host?.Left ?? 0, host?.Top ?? 0);
+
+            if (GetTemplateChild("OverflowPopup") is Popup popup)
+            {
+                popup.IsOpen = false;
+            }
+
+            NotificationPropertiesWindow.Open(NotificationArea, position);
+            e.Handled = true;
         }
 
         private bool IsCollapsed()

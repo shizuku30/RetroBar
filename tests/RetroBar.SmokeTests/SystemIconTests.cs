@@ -3,6 +3,7 @@ using RetroBar.Controls;
 using RetroBar.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -240,6 +241,95 @@ internal static class SystemIconTests
         finally
         {
             app.Resources.Remove(TrayIconThemeManager.ResourceKey);
+            app.Resources.MergedDictionaries.Remove(theme);
+        }
+    }
+
+    public static void CheckWin7Customization(Application app, string root)
+    {
+        using IsolatedSettings settings = new IsolatedSettings();
+        settings.Set("Theme", "Windows7");
+        ResourceDictionary theme = new ResourceDictionary
+        {
+            Source = new Uri(Path.Combine(root, "RetroBar", "Themes", "Windows7.xaml"))
+        };
+        ResourceDictionary chinese = new ResourceDictionary
+        {
+            Source = new Uri(Path.Combine(root, "RetroBar", "Languages", "\u4e2d\u6587(\u7b80\u4f53).xaml"))
+        };
+        app.Resources.MergedDictionaries.Add(theme);
+
+        // 实例化真实窗口，但不显示任务栏按钮或抢占焦点。
+        Style silentDialog = new Style(typeof(Window), (Style)app.FindResource("PropertiesWindow"));
+        silentDialog.Setters.Add(new Setter(UIElement.OpacityProperty, 0.0));
+        silentDialog.Setters.Add(new Setter(Window.ShowActivatedProperty, false));
+        silentDialog.Setters.Add(new Setter(Window.ShowInTaskbarProperty, false));
+        app.Resources["PropertiesWindow"] = silentDialog;
+        NotifyIconList list = null;
+        Window host = new Window { Left = 0, Top = 0 };
+        try
+        {
+            // 只提供测试集合，不初始化 shell 服务或注册真实通知区域。
+            NotificationArea area = new NotificationArea(null, null);
+            area.TrayIcons = new ObservableCollection<NotifyIcon>();
+            area.AllIcons = new ListCollectionView(area.TrayIcons);
+            area.PinnedIcons = new ListCollectionView(area.TrayIcons);
+            area.UnpinnedIcons = new ListCollectionView(area.TrayIcons);
+            list = new NotifyIconList
+            {
+                Style = (Style)app.FindResource(typeof(NotifyIconList)),
+                NotificationArea = area
+            };
+            host.Content = list;
+            list.ApplyTemplate();
+            Button link = list.Template.FindName("CustomizeLink", list) as Button;
+            Popup popup = list.Template.FindName("OverflowPopup", list) as Popup;
+            Assert(link != null && popup != null, "The Win7 customization button is missing.");
+            Assert((string)link.Content == "Customize...", "The English Customize link is not localized.");
+            app.Resources.MergedDictionaries.Add(chinese);
+            Assert((string)link.Content == "自定义...", "The existing Customize link did not switch to Simplified Chinese.");
+
+            popup.Child.Opacity = 0;
+            popup.IsOpen = true;
+            link.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            RetroBar.NotificationPropertiesWindow dialog = app.Windows.OfType<RetroBar.NotificationPropertiesWindow>().Single();
+            Assert(!popup.IsOpen, "Customization left the overflow popup open.");
+            Assert(ReferenceEquals(dialog.DataContext, area), "Customization opened the wrong notification area.");
+            Assert(dialog.Title == "自定义通知", "The RetroBar customization dialog is not localized.");
+            Assert(dialog.IsVisible && dialog.Opacity == 0 && !dialog.ShowInTaskbar && !dialog.ShowActivated,
+                "The dialog test must remain invisible and must not take focus.");
+            dialog.Hide();
+            link.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            Assert(app.Windows.OfType<RetroBar.NotificationPropertiesWindow>().Single() == dialog,
+                "Clicking Customize twice created duplicate dialogs.");
+            dialog.Close();
+
+            ControlTemplate originalTemplate = list.Template;
+            list.Template = new ControlTemplate(typeof(NotifyIconList))
+            {
+                VisualTree = new FrameworkElementFactory(typeof(ContentPresenter))
+            };
+            list.ApplyTemplate();
+            link.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            Assert(!app.Windows.OfType<RetroBar.NotificationPropertiesWindow>().Any(),
+                "An obsolete theme template still handles customization clicks.");
+            list.Template = originalTemplate;
+            list.ApplyTemplate();
+            Button replacementLink = (Button)list.Template.FindName("CustomizeLink", list);
+            replacementLink.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            Assert(app.Windows.OfType<RetroBar.NotificationPropertiesWindow>().Count() == 1,
+                "Customization stopped working after a theme template change.");
+            app.Resources.MergedDictionaries.Remove(chinese);
+            Assert((string)replacementLink.Content == "Customize...", "The Customize link did not restore the fallback language.");
+        }
+        finally
+        {
+            foreach (RetroBar.NotificationPropertiesWindow dialog in app.Windows.OfType<RetroBar.NotificationPropertiesWindow>().ToArray()) dialog.Close();
+            list?.RaiseEvent(new RoutedEventArgs(FrameworkElement.UnloadedEvent));
+            host.Content = null;
+            host.Close();
+            app.Resources.Remove("PropertiesWindow");
+            app.Resources.MergedDictionaries.Remove(chinese);
             app.Resources.MergedDictionaries.Remove(theme);
         }
     }
