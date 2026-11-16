@@ -25,7 +25,7 @@ Local integration fixes:
 - Localize the Win7 overflow's Customize link and open RetroBar's own notification customization dialog instead of Windows settings.
 - Reuse the existing Win7 task-button images with fixed-size corner/edge slices, keeping the thin black outline instead of thick nested borders and a permanent blue glow. Center icon-only content independently of the chrome; retain vertical labels, badges, pressed feedback, and amber flashing.
 - Give horizontal Win7 tasks and closed pinned items the same 40px row, without negative taskbar content margins or extra vertical button margins. Running buttons no longer shrink to their icon's natural height; both icon types use the native 32px icon with 4px above/below.
-- Match Win7 hot tracking to the displayed icon's dominant color and the pointer position. Closed shortcuts use Aero's dedicated hover/pressed frames, not notification-area highlights; their frames and glow fade away when the pointer leaves.
+- Match running Win7 task buttons to the displayed icon's dominant color and the pointer position. Closed shortcuts do not use icon-colored hot tracking: only Aero's dedicated hover/pressed frames fade in/out, with no frame at rest.
 
 The normal-state icon metrics were checked against the supplied Windows 7
 `explorer.exe` drawing path (`CTaskListWnd::_HandleThemeChanged` and
@@ -44,7 +44,8 @@ the light follows X on horizontal bars and Y on vertical bars. Icon-only mode
 uses the native brighter core. Icon sampling is cached for frozen images;
 mutable icon changes refresh the color, and pointer moves reuse the pixel buffer.
 The glow is drawn below the Aero frame without affecting sizing, icon sources,
-clicks or callback data. Closed shortcut images come from `IMAGE/1014`, states
+clicks or callback data. This colored, pointer-following layer applies only to
+running task buttons, not closed shortcuts. Closed shortcut images come from `IMAGE/1014`, states
 9/10; running inactive/active hover frames use states 3/6. These retain their
 complete 40px height and have corrected PNG alpha interpretation.
 
@@ -175,6 +176,8 @@ aspect ratio, ancestor clipping, matching baselines and native 40px row height.
 Hot-tracking checks cover gray/transparent pixels, saturation and dominance
 thresholds, bucket ties, alpha handling, mutable icon updates, horizontal/vertical
 pointer movement, clipping, closed hover/pressed/idle states and event cleanup.
+Closed shortcuts are also checked to contain no color-tracking renderer and to
+render identical hover-background pixels for differently colored icons.
 The real button templates are rendered at 100/125/150/200% WPF DPI with several
 sample colors and left/center/right pointer positions.
 

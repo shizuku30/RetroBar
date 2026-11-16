@@ -794,14 +794,9 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Win7HotTrack" TargetType="{x:Type controls:TaskButtonHotTrack}">
+    <Style x:Key="Win7HoverFade" TargetType="FrameworkElement">
         <Setter Property="Opacity" Value="0" />
-        <Setter Property="Orientation"
-                Value="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Value="Vertical">
-                <Setter Property="IconOnly" Value="False" />
-            </DataTrigger>
             <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
                 <DataTrigger.EnterActions>
                     <BeginStoryboard>
@@ -817,6 +812,16 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Win7HotTrack" TargetType="{x:Type controls:TaskButtonHotTrack}" BasedOn="{StaticResource Win7HoverFade}">
+        <Setter Property="Orientation"
+                Value="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Value="Vertical">
+                <Setter Property="IconOnly" Value="False" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -1834,7 +1839,7 @@
         </Style.Triggers>
     </Style>
 
-    <!-- 快捷栏与任务列表共享图标尺寸、行高和取色光晕；未打开项的专用框体只在悬停或按下时显示。 -->
+    <!-- 快捷栏与任务列表共享图标尺寸和行高；未打开项只显示原版专用框体，不使用图标取色光晕。 -->
     <Style TargetType="Image" x:Key="ToolbarIcon" BasedOn="{StaticResource TaskIcon}">
         <Setter Property="Width" Value="32" />
         <Setter Property="Height" Value="32" />
@@ -1852,13 +1857,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid Background="Transparent" x:Name="ButtonBorder">
-                        <controls:TaskButtonHotTrack x:Name="HotTrack"
-                                                     Icon="{Binding Content.Source, RelativeSource={RelativeSource TemplatedParent}}"
-                                                     IconOnly="True"
-                                                     Style="{StaticResource Win7HotTrack}" />
+                        <FrameworkElement x:Name="HoverFade"
+                                          IsHitTestVisible="False"
+                                          Style="{StaticResource Win7HoverFade}" />
                         <controls:TaskButtonChrome x:Name="ButtonChrome"
                                                    Source="{Binding Background.ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
-                                                   Opacity="{Binding ElementName=HotTrack, Path=Opacity}"
+                                                   Opacity="{Binding ElementName=HoverFade, Path=Opacity}"
                                                    IsHitTestVisible="False" />
                         <ContentPresenter x:Name="Content"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

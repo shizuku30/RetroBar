@@ -48,7 +48,7 @@ internal static partial class SystemIconTests
             Color[] colors = { Color.FromRgb(220, 48, 36), Color.FromRgb(224, 184, 32), Color.FromRgb(32, 112, 224), Colors.Gray };
             BitmapSource[] icons = colors.Select(PreviewGlyph).ToArray();
             StackPanel page = new StackPanel();
-            List<(Button Button, TaskButtonHotTrack Glow, double X)> effects = new List<(Button, TaskButtonHotTrack, double)>();
+            List<(Button Button, FrameworkElement Fade, TaskButtonHotTrack Glow, double X)> effects = new List<(Button, FrameworkElement, TaskButtonHotTrack, double)>();
             foreach (double x in new[] { 7.0, 29.0, 51.0 })
             {
                 StackPanel row = new StackPanel { Orientation = Orientation.Horizontal, Background = new SolidColorBrush(Color.FromRgb(54, 150, 188)) };
@@ -66,13 +66,18 @@ internal static partial class SystemIconTests
                 page.UpdateLayout();
                 foreach (Button button in Descendants(row).OfType<Button>())
                 {
-                    TaskButtonHotTrack glow = (TaskButtonHotTrack)button.Template.FindName("HotTrack", button);
-                    Assert(glow != null && !glow.IsHitTestVisible, "The new effect is missing or intercepts native button input.");
+                    TaskButtonHotTrack glow = button.Template.FindName("HotTrack", button) as TaskButtonHotTrack;
+                    FrameworkElement fade = glow ?? (FrameworkElement)button.Template.FindName("HoverFade", button);
+                    Assert(fade != null && !fade.IsHitTestVisible, "The hover fade is missing or intercepts native button input.");
+                    if (button.Content is Image)
+                        Assert(!Descendants(button).OfType<TaskButtonHotTrack>().Any(), "Closed shortcuts must not sample icon colors or paint a pointer-following glow.");
+                    else
+                        Assert(glow != null, "Running windows must retain icon-colored pointer tracking.");
                     SetInputState(button, typeof(UIElement), "IsMouseOverPropertyKey", true);
-                    glow.BeginAnimation(UIElement.OpacityProperty, null);
-                    glow.Opacity = 1;
-                    glow.PointerPosition = new Point(x, 35);
-                    effects.Add((button, glow, x));
+                    fade.BeginAnimation(UIElement.OpacityProperty, null);
+                    fade.Opacity = 1;
+                    if (glow != null) glow.PointerPosition = new Point(x, 35);
+                    effects.Add((button, fade, glow, x));
                 }
                 page.Children.Insert(page.Children.Count - 1, new TextBlock
                 {
@@ -93,6 +98,11 @@ internal static partial class SystemIconTests
                     Path.Combine(root, "artifacts", "smoke", $"net{Environment.Version.Major}", $"win7-hottrack-follow-{dpiScale * 100:0}.png"), 96 * dpiScale);
             }
 
+            byte[] redShortcut = ReadButtonFramePixels(effects[^2].Button);
+            byte[] yellowShortcut = ReadButtonFramePixels(effects[^1].Button);
+            int backgroundPixel = (30 * 58 + 4) * 4;
+            Assert(redShortcut.Skip(backgroundPixel).Take(4).SequenceEqual(yellowShortcut.Skip(backgroundPixel).Take(4)),
+                "Closed shortcut backgrounds must not change with the icon's dominant color.");
             var pinned = effects.Last();
             TaskButtonChrome chrome = (TaskButtonChrome)pinned.Button.Template.FindName("ButtonChrome", pinned.Button);
             Assert(chrome.Source.PixelWidth == 60 && chrome.Source.PixelHeight == 40, "Closed pinned states must use the full native 60x40 frame, not the cropped tray effect.");
@@ -101,8 +111,8 @@ internal static partial class SystemIconTests
             Assert(ReferenceEquals(chrome.Source, app.FindResource("Win7_NotRunningPressedImage")), "Closed pinned pressed feedback must use native state 10.");
             SetInputState(pinned.Button, typeof(ButtonBase), "IsPressedPropertyKey", false);
             SetInputState(pinned.Button, typeof(UIElement), "IsMouseOverPropertyKey", false);
-            pinned.Glow.BeginAnimation(UIElement.OpacityProperty, null);
-            pinned.Glow.Opacity = 0;
+            pinned.Fade.BeginAnimation(UIElement.OpacityProperty, null);
+            pinned.Fade.Opacity = 0;
             Assert(chrome.Opacity == 0, "A closed pinned icon must have no frame when not hovered.");
 
             TaskButtonHotTrack probe = new TaskButtonHotTrack { Icon = icons[0] };
@@ -146,6 +156,15 @@ internal static partial class SystemIconTests
             host.Close();
             app.Resources.MergedDictionaries.Remove(theme);
         }
+    }
+
+    private static byte[] ReadButtonFramePixels(Button button)
+    {
+        RenderTargetBitmap bitmap = new RenderTargetBitmap(58, 40, 96, 96, PixelFormats.Pbgra32);
+        bitmap.Render(button);
+        byte[] pixels = new byte[58 * 40 * 4];
+        bitmap.CopyPixels(pixels, 58 * 4, 0);
+        return pixels;
     }
 
     private static BitmapSource PreviewGlyph(Color color)
