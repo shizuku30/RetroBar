@@ -123,7 +123,8 @@
                  UriSource="../Resources/Win7/clockPressed.png" />
 
     <system:Double x:Key="TaskbarHeight">40</system:Double>
-    <system:Double x:Key="TaskbarRowHeight">34</system:Double>
+    <!-- TaskBand2/Button CONTENTMARGINS 上下各 4px，加上 32px 图标，原版每行高 40px。 -->
+    <system:Double x:Key="TaskbarRowHeight">40</system:Double>
     <system:Double x:Key="TaskbarWidth">60</system:Double>
     <system:Boolean x:Key="AllowsTransparency">True</system:Boolean>
     <system:Boolean x:Key="UseFloatingStartButton">True</system:Boolean>
@@ -132,7 +133,7 @@
          58px like the Win7 Superbar button = 32px icon + 13px glass per side -->
     <system:Double x:Key="TaskButtonWidth">58</system:Double>
     <system:Double x:Key="TaskButtonMinWidth">50</system:Double>
-    <!-- 1px vertical gap so the 40px glass buttons breathe inside the 40px bar -->
+    <!-- 默认外边距；水平按钮在固定行高内只保留左右 1px 间隔。 -->
     <Thickness x:Key="TaskButtonMargin" Left="1" Top="1" Right="1" Bottom="1" />
     <FontWeight x:Key="SetTimeMenuItemWeight">Normal</FontWeight>
     <!-- Windows 7 Aero glass: black glass tint with the subtle top reflection
@@ -713,7 +714,7 @@
                                         <Border x:Name="TaskbarGradientLayer"
                                                 Background="{DynamicResource TaskbarBackground}"
                                                 Opacity="0.35" />
-                                        <ContentPresenter Margin="0,-2,0,-2"
+                                        <ContentPresenter Margin="0"
                                                           Name="Content" />
                                     </Grid>
                                 </Border>
@@ -837,6 +838,12 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template" Value="{StaticResource Win7TaskButtonTemplate}" />
         <Style.Triggers>
+            <!-- WrapPanel 不会把自然高度不足的按钮拉满；显式保留原版行高，且纵向不再另加外边距。 -->
+            <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                         Value="Horizontal">
+                <Setter Property="Height" Value="{DynamicResource TaskbarRowHeight}" />
+                <Setter Property="Margin" Value="1,0,1,0" />
+            </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource Win7_InactivePointerOverBrush}" />
             </Trigger>
@@ -1798,11 +1805,13 @@
            x:Key="ToolbarItems"
            BasedOn="{StaticResource ToolbarItems}">
         <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
                          Value="Vertical">
                 <DataTrigger.Setters>
                     <Setter Property="Margin" Value="0,0,0,0" />
+                    <Setter Property="VerticalAlignment" Value="Top" />
                 </DataTrigger.Setters>
             </DataTrigger>
         </Style.Triggers>
@@ -1898,6 +1907,12 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                         Value="Horizontal">
+                <Setter Property="Margin" Value="1,0,1,0" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!-- ToolbarButtonActive keeps the active glass for when a pinned item is running (optional) -->

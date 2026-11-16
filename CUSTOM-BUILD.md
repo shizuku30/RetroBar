@@ -24,6 +24,15 @@ Local integration fixes:
 - Keep Win7 notification spacing outside the image/highlight content box and center overflow cells, so hover chrome aligns with each icon.
 - Localize the Win7 overflow's Customize link and open RetroBar's own notification customization dialog instead of Windows settings.
 - Reuse the existing Win7 task-button images with fixed-size corner/edge slices, keeping the thin black outline instead of thick nested borders and a permanent blue glow. Center icon-only content independently of the chrome; retain vertical labels, badges, pressed feedback, and amber flashing.
+- Give horizontal Win7 tasks and closed pinned items the same 40px row, without negative taskbar content margins or extra vertical button margins. Running buttons no longer shrink to their icon's natural height; both icon types use the native 32px icon with 4px above/below.
+
+The normal-state icon metrics were checked against the supplied Windows 7
+`explorer.exe` drawing path (`CTaskListWnd::_HandleThemeChanged` and
+`CTaskBtnGroup::_DrawRegularButton`) and `aero.msstyles` 6.1.7600.16385.
+`TaskBand2`, part 5, `CONTENTMARGINS` (3602) is left/right 10px and top/bottom
+4px. The theme file SHA-256 is
+`6da5ef369e56d81ba737b65d69a3316d40096e52b1a1bedb87a90f5dbf6925e2`.
+These are 96-DPI metrics; no guessed vertical translation is applied.
 
 ## Themed system tray icons
 
@@ -144,6 +153,11 @@ three widths, 100/125/150/175/200% scaling, LTR/RTL, both orientations and badge
 settings. Horizontal icons and vertical icon/title content are centered to within
 half a rendered pixel; the application's icon source is preserved. Pixel checks
 also verify that resizing the chrome does not widen or blur its original edges.
+Mixed-row tests additionally use the actual Taskbar, TaskList, Toolbar, item
+templates and scroll presenters, leaving item heights to the theme rather than
+forcing test-control heights. They check 20 one/two-row layouts at real WPF
+100/125/150/175/200% DPI and separate 100/150% taskbar scaling, including icon
+aspect ratio, ancestor clipping, matching baselines and native 40px row height.
 
 The following larger changes were deliberately left out: grouped tasks (#1433),
 per-monitor/layout redesign (#1503), and low-level mouse-hook replacement (#1413).

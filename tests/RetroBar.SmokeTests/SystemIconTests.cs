@@ -528,10 +528,10 @@ internal static partial class SystemIconTests
         }
     }
 
-    private static void SaveVisual(Visual visual, int width, int height, string path)
+    private static void SaveVisual(Visual visual, int width, int height, string path, double dpi = 96)
     {
         Directory.CreateDirectory(Path.GetDirectoryName(path));
-        RenderTargetBitmap bitmap = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Pbgra32);
+        RenderTargetBitmap bitmap = new RenderTargetBitmap(width, height, dpi, dpi, PixelFormats.Pbgra32);
         bitmap.Render(visual);
         PngBitmapEncoder encoder = new PngBitmapEncoder();
         encoder.Frames.Add(BitmapFrame.Create(bitmap));
