@@ -20,7 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 using NotifyIcon = ManagedShell.WindowsTray.NotifyIcon;
 
-internal static class SystemIconTests
+internal static partial class SystemIconTests
 {
     private static readonly Guid Network = new Guid(NotificationArea.NETWORK_GUID);
     private static readonly Guid Volume = new Guid(NotificationArea.VOLUME_GUID);

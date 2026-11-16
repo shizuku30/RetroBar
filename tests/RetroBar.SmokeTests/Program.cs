@@ -39,6 +39,7 @@ internal static class Program
         Run("Win7 tray and overflow hover without pin overlays", () => SystemIconTests.CheckWin7Hover(app, root));
         Run("Win7 hover alignment across orientation, scale and text direction", () => SystemIconTests.CheckWin7Alignment(app, root));
         Run("Win7 localized Customize link opens RetroBar notification settings", () => SystemIconTests.CheckWin7Customization(app, root));
+        Run("Win7 task-button state rendering and centered icons", () => SystemIconTests.CheckWin7TaskButtons(app, root));
         Run("Network glyph rendering without creating a tray icon", CheckNetworkGlyphs);
         Run("Network signal thresholds and adapter selection", CheckNetworkSelection);
         Run("Native network structure layouts", CheckNativeLayouts);

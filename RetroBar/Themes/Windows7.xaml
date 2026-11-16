@@ -287,9 +287,9 @@
                          Center="0.5,1.0"
                          RadiusX="0.75"
                          RadiusY="0.6">
-        <GradientStop Color="#66D6F0FF"
+        <GradientStop Color="#60FFFFFF"
                       Offset="0.0" />
-        <GradientStop Color="#00D6F0FF"
+        <GradientStop Color="#00FFFFFF"
                       Offset="0.7" />
     </RadialGradientBrush>
 
@@ -791,289 +791,116 @@
         </Setter>
     </Style>
 
-    <!-- ============ Windows 7 Superbar task buttons ============
-         Structure from the reference Win7 theme (nested glass borders), Win7 state brushes.
-         Normal: subtle glass outline; Hover: bright glass; Active: dark glass + lit base;
-         Pressed: darker; Flashing: amber with pulse animation. -->
-    <Style TargetType="Button"
-           x:Key="TaskButton">
-        <Setter Property="Foreground"
-                Value="{DynamicResource ButtonForeground}" />
-        <Setter Property="Margin"
-                Value="{DynamicResource TaskButtonMargin}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <!-- INACTIVE OPEN: wide border (2px) as in the reference Win7 photo -->
-                    <Border Background="Transparent"
-                            Padding="0"
-                            Name="ButtonBorder">
-                        <Border BorderThickness="2"
-                                BorderBrush="{DynamicResource TaskButtonOuterBorder}"
-                                CornerRadius="4"
-                                x:Name="ButtonOuterBorder">
-                            <Border BorderThickness="2"
-                                    BorderBrush="{DynamicResource TaskButtonInnerBorder}"
-                                    Background="{DynamicResource TaskButtonBackground}"
-                                    CornerRadius="3"
-                                    x:Name="ButtonInnerBorder">
-                                <Border BorderThickness="0,1,1,0"
-                                        BorderBrush="{DynamicResource TaskButtonInnerTopRightBorder}"
-                                        CornerRadius="2"
-                                        x:Name="ButtonInnerTopRightBorder">
-                                    <Border BorderThickness="1,0,0,1"
-                                            BorderBrush="{DynamicResource TaskButtonInnerBottomLeftBorder}"
-                                            CornerRadius="2"
-                                            x:Name="ButtonInnerBottomLeftBorder">
-                                        <ContentPresenter Margin="6,0"
-                                                          VerticalAlignment="Center"
-                                                          x:Name="Content" />
-                                    </Border>
-                                </Border>
-                            </Border>
-                        </Border>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
-                                     Value="Vertical">
-                            <DataTrigger.Setters>
-                                <Setter TargetName="ButtonBorder"
-                                        Property="Padding"
-                                        Value="1,0,1,2" />
-                            </DataTrigger.Setters>
-                        </DataTrigger>
-                        <!-- INACTIVE HOVER: border widened 7% (3px->3px but visually wider) -->
-                        <Trigger Property="IsMouseOver"
-                                 Value="True">
-                            <Setter TargetName="ButtonOuterBorder"
-                                    Property="BorderBrush"
-                                    Value="{DynamicResource TaskButtonOuterBorderHover}" />
-                            <Setter TargetName="ButtonOuterBorder"
-                                    Property="BorderThickness"
-                                    Value="2" />
-                            <Setter TargetName="ButtonInnerBorder"
-                                    Property="BorderBrush"
-                                    Value="{DynamicResource TaskButtonInnerBorderHover}" />
-                            <Setter TargetName="ButtonInnerBorder"
-                                    Property="BorderThickness"
-                                    Value="2" />
-                            <Setter TargetName="ButtonInnerTopRightBorder"
-                                    Property="BorderBrush"
-                                    Value="{DynamicResource TaskButtonInnerTopRightBorderHover}" />
-                            <Setter TargetName="ButtonInnerTopRightBorder"
-                                    Property="BorderThickness"
-                                    Value="1,1,1,0" />
-                            <Setter TargetName="ButtonInnerBottomLeftBorder"
-                                    Property="BorderBrush"
-                                    Value="{DynamicResource TaskButtonInnerBottomLeftBorderHover}" />
-                            <Setter TargetName="ButtonInnerBottomLeftBorder"
-                                    Property="BorderThickness"
-                                    Value="0,0,0,1" />
-                            <Setter TargetName="ButtonInnerBorder"
-                                    Property="Background"
-                                    Value="{DynamicResource TaskButtonBackgroundHover}" />
-                            <Setter TargetName="ButtonOuterBorder"
-                                    Property="Background"
-                                    Value="{DynamicResource TaskButtonBottomBackgroundHover}" />
-                        </Trigger>
-                        <Trigger Property="IsPressed"
-                                 Value="True">
-                            <Setter Property="Foreground"
-                                    Value="{DynamicResource ButtonPressedForeground}" />
-                            <Setter TargetName="ButtonOuterBorder"
-                                    Property="BorderBrush"
-                                    Value="{DynamicResource TaskButtonOuterBorderActive}" />
-                            <Setter TargetName="ButtonInnerBorder"
-                                    Property="BorderBrush"
-                                    Value="{DynamicResource TaskButtonInnerBorderActive}" />
-                            <Setter TargetName="ButtonInnerTopRightBorder"
-                                    Property="BorderBrush"
-                                    Value="{DynamicResource TaskButtonInnerTopRightBorderActive}" />
-                            <Setter TargetName="ButtonInnerBottomLeftBorder"
-                                    Property="BorderBrush"
-                                    Value="{DynamicResource TaskButtonInnerBottomLeftBorderActive}" />
-                            <Setter TargetName="ButtonInnerBorder"
-                                    Property="Background"
-                                    Value="{DynamicResource TaskButtonBackgroundPressed}" />
-                            <Setter TargetName="ButtonOuterBorder"
-                                    Property="Background"
-                                    Value="Transparent" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+    <!-- Win7 按钮复用已有主题图片；背景与内容分层，边框和状态变化不再挤压图标。 -->
+    <ControlTemplate x:Key="Win7TaskButtonTemplate" TargetType="Button">
+        <Grid Background="Transparent" x:Name="ButtonBorder">
+            <controls:TaskButtonChrome x:Name="ButtonChrome"
+                                       Source="{Binding Background.ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                       IsHitTestVisible="False" />
+            <Border x:Name="HoverLight"
+                    Background="{DynamicResource TaskButtonBottomBackgroundHover}"
+                    Height="10"
+                    VerticalAlignment="Bottom"
+                    Margin="2,0,2,2"
+                    Opacity="0"
+                    IsHitTestVisible="False" />
+            <Border x:Name="PressedShade"
+                    Background="#40000000"
+                    CornerRadius="1"
+                    Margin="1"
+                    Opacity="0"
+                    IsHitTestVisible="False" />
+            <ContentPresenter x:Name="Content"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="HoverLight" Property="Opacity" Value="0.45" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="PressedShade" Property="Opacity" Value="1" />
+                <Setter TargetName="HoverLight" Property="Opacity" Value="0" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="Button" x:Key="TaskButton">
+        <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
+        <Setter Property="Background" Value="{DynamicResource Win7_InactiveNormalBrush}" />
+        <Setter Property="Margin" Value="{DynamicResource TaskButtonMargin}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template" Value="{StaticResource Win7TaskButtonTemplate}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Win7_InactivePointerOverBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ButtonPressedForeground}" />
+                <Setter Property="Background" Value="{DynamicResource Win7_InactiveNormalBrush}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <!-- ACTIVE: taller border (extends to the taskbar edge, not short) -->
-    <Style TargetType="Button"
-           x:Key="TaskButtonActive"
-           BasedOn="{StaticResource TaskButton}">
-        <Setter Property="Foreground"
-                Value="{DynamicResource ButtonActiveForeground}" />
-        <Setter Property="Margin"
-                Value="1,1,1,0" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Background="Transparent"
-                            Padding="0,0,0,1"
-                            Name="ButtonBorder">
-                        <Grid>
-                            <Border BorderThickness="1,1,1,0"
-                                    BorderBrush="{DynamicResource TaskButtonOuterBorderActive}"
-                                    Background="{DynamicResource TaskButtonBottomBackgroundActive}"
-                                    CornerRadius="3,3,0,0"
-                                    x:Name="ButtonOuterBorder">
-                                <Border BorderThickness="1,1,1,0"
-                                        BorderBrush="{DynamicResource TaskButtonInnerBorderActive}"
-                                        Background="{DynamicResource TaskButtonBackgroundActive}"
-                                        CornerRadius="3,3,0,0"
-                                        x:Name="ButtonInnerBorder">
-                                    <Border BorderThickness="0,1,1,0"
-                                            BorderBrush="{DynamicResource TaskButtonInnerTopRightBorderActive}"
-                                            CornerRadius="0,3,0,0"
-                                            x:Name="ButtonInnerTopRightBorder">
-                                        <Border BorderThickness="1,0,0,0"
-                                                BorderBrush="{DynamicResource TaskButtonInnerBottomLeftBorderActive}"
-                                                CornerRadius="3,3,0,0"
-                                                x:Name="ButtonInnerBottomLeftBorder">
-                                            <ContentPresenter Margin="6,0,6,1"
-                                                              VerticalAlignment="Center"
-                                                              x:Name="Content" />
-                                        </Border>
-                                    </Border>
-                                </Border>
-                            </Border>
-                            <!-- Specular highlight strip: the crisp bright line Win7
-                                 shows right at the bottom edge of an active/open
-                                 taskbar button, on top of the soft radial glow -->
-                            <Rectangle Height="2"
-                                       VerticalAlignment="Bottom"
-                                       Margin="1,0,1,0"
-                                       Fill="{DynamicResource TaskButtonBottomHighlightActive}"
-                                       x:Name="BottomHighlight" />
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
-                                     Value="Vertical">
-                            <DataTrigger.Setters>
-                                <Setter TargetName="ButtonBorder"
-                                        Property="Padding"
-                                        Value="1,0,1,2" />
-                            </DataTrigger.Setters>
-                        </DataTrigger>
-                        <Trigger Property="IsMouseOver"
-                                 Value="True">
-                            <Setter TargetName="ButtonInnerBorder"
-                                    Property="Background"
-                                    Value="{DynamicResource TaskButtonBackgroundActiveHover}" />
-                            <Setter TargetName="ButtonOuterBorder"
-                                    Property="Background"
-                                    Value="{DynamicResource TaskButtonBottomBackgroundActiveHover}" />
-                            <Setter TargetName="BottomHighlight"
-                                    Property="Fill"
-                                    Value="{DynamicResource TaskButtonBottomHighlightActiveHover}" />
-                        </Trigger>
-                        <Trigger Property="IsPressed"
-                                 Value="True">
-                            <Setter Property="Foreground"
-                                    Value="{DynamicResource ButtonPressedForeground}" />
-                            <Setter TargetName="ButtonInnerBorder"
-                                    Property="Background"
-                                    Value="{DynamicResource TaskButtonBackgroundPressed}" />
-                            <Setter TargetName="ButtonOuterBorder"
-                                    Property="Background"
-                                    Value="Transparent" />
-                            <Setter TargetName="BottomHighlight"
-                                    Property="Opacity"
-                                    Value="0.35" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+    <Style TargetType="Button" x:Key="TaskButtonActive" BasedOn="{StaticResource TaskButton}">
+        <Setter Property="Foreground" Value="{DynamicResource ButtonActiveForeground}" />
+        <Setter Property="Background" Value="{DynamicResource Win7_ActiveNormalBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Win7_ActiveNormalBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Win7_InactiveNormalBrush}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <Style TargetType="Button"
-           x:Key="TaskButtonFlashing"
-           BasedOn="{StaticResource TaskButton}">
+    <Style TargetType="Button" x:Key="TaskButtonFlashing" BasedOn="{StaticResource TaskButton}">
+        <Setter Property="Foreground" Value="{DynamicResource ButtonFlashingForeground}" />
+        <Setter Property="Background" Value="{DynamicResource Win7_RequestingAttentionBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="Transparent"
-                            Padding="0"
-                            Name="ButtonBorder">
-                        <Border BorderThickness="1"
-                                BorderBrush="{DynamicResource TaskButtonOuterBorderFlashing}"
-                                Background="{DynamicResource TaskButtonBottomBackgroundFlashing}"
-                                CornerRadius="3"
-                                x:Name="ButtonOuterBorder">
-                            <Border BorderThickness="1"
-                                    BorderBrush="{DynamicResource TaskButtonInnerBorderFlashing}"
-                                    Background="{DynamicResource TaskButtonBackgroundFlashing}"
-                                    CornerRadius="2"
-                                    x:Name="ButtonInnerBorder">
-                                <Border BorderThickness="0,1,1,0"
-                                        BorderBrush="{DynamicResource TaskButtonInnerTopRightBorderFlashing}"
-                                        CornerRadius="2"
-                                        x:Name="ButtonInnerTopRightBorder">
-                                    <Border BorderThickness="1,0,0,1"
-                                            BorderBrush="{DynamicResource TaskButtonInnerBottomLeftBorderFlashing}"
-                                            CornerRadius="2"
-                                            x:Name="ButtonInnerBottomLeftBorder">
-                                        <Grid>
-                                            <Border Background="{DynamicResource TaskButtonFlashPulseOverlay}"
-                                                    CornerRadius="2"
-                                                    Opacity="0.2"
-                                                    IsHitTestVisible="False"
-                                                    x:Name="FlashPulse" />
-                                            <ContentPresenter Margin="6,0"
-                                                              VerticalAlignment="Center"
-                                                              x:Name="Content" />
-                                        </Grid>
-                                    </Border>
-                                </Border>
-                            </Border>
-                        </Border>
-                    </Border>
+                    <Grid Background="Transparent" x:Name="ButtonBorder">
+                        <controls:TaskButtonChrome x:Name="ButtonChrome"
+                                                   Source="{Binding Background.ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                                   IsHitTestVisible="False" />
+                        <Border x:Name="FlashPulse"
+                                Background="{DynamicResource TaskButtonFlashPulseOverlay}"
+                                CornerRadius="1"
+                                Margin="1"
+                                Opacity="0.2"
+                                IsHitTestVisible="False" />
+                        <Border x:Name="PressedShade"
+                                Background="#40000000"
+                                CornerRadius="1"
+                                Margin="1"
+                                Opacity="0"
+                                IsHitTestVisible="False" />
+                        <ContentPresenter x:Name="Content"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
-                                     Value="Vertical">
-                            <DataTrigger.Setters>
-                                <Setter TargetName="ButtonBorder"
-                                        Property="Padding"
-                                        Value="1,0,1,2" />
-                            </DataTrigger.Setters>
-                        </DataTrigger>
-                        <Trigger Property="IsPressed"
-                                 Value="True">
-                            <Setter Property="Foreground"
-                                    Value="{DynamicResource ButtonPressedForeground}" />
-                            <Setter TargetName="ButtonInnerBorder"
-                                    Property="Background"
-                                    Value="{DynamicResource TaskButtonBackgroundPressed}" />
-                            <Setter TargetName="ButtonOuterBorder"
-                                    Property="Background"
-                                    Value="Transparent" />
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PressedShade" Property="Opacity" Value="1" />
+                            <Setter TargetName="FlashPulse" Property="Opacity" Value="0" />
                         </Trigger>
-                        <Trigger Property="IsMouseOver"
-                                 Value="False">
+                        <Trigger Property="IsMouseOver" Value="False">
                             <Trigger.EnterActions>
                                 <BeginStoryboard x:Name="FlashPulseStoryboard">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="FlashPulse"
                                                                        Storyboard.TargetProperty="Opacity"
                                                                        RepeatBehavior="Forever">
-                                            <LinearDoubleKeyFrame Value="0.1"
-                                                                  KeyTime="0:0:0" />
-                                            <LinearDoubleKeyFrame Value="0.55"
-                                                                  KeyTime="0:0:0.35" />
-                                            <LinearDoubleKeyFrame Value="0.1"
-                                                                  KeyTime="0:0:0.7" />
+                                            <LinearDoubleKeyFrame Value="0.1" KeyTime="0:0:0" />
+                                            <LinearDoubleKeyFrame Value="0.55" KeyTime="0:0:0.35" />
+                                            <LinearDoubleKeyFrame Value="0.1" KeyTime="0:0:0.7" />
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -1086,6 +913,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Win7_RequestingAttentionBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Win7_InactiveNormalBrush}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="ContentControl"
@@ -1449,14 +1284,12 @@
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
         <Style.Triggers>
-            <!-- With the label collapsed (combined mode) the icon fills the
-                 button alone; a 4px left margin keeps it centered in the
-                 58px Superbar button (13px of glass per side) -->
+            <!-- 水平图标模式由内容容器居中，图片本身不再携带单侧补偿留白。 -->
             <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
                          Value="Horizontal">
                 <DataTrigger.Setters>
                     <Setter Property="Margin"
-                            Value="4,0,0,0" />
+                            Value="0" />
                 </DataTrigger.Setters>
             </DataTrigger>
         </Style.Triggers>
