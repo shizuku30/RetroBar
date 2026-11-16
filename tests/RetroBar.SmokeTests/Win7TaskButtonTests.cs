@@ -96,8 +96,8 @@ internal static partial class SystemIconTests
                     if (Math.Abs(offset.X * scale) > 0.51 || Math.Abs(offset.Y * scale) > 0.51)
                         errors.Add($"{orientation}/{flow}/width={width}/scale={scale}/badges={badges}: offset={offset}");
                     var state = states[i];
-                    string imageKey = state.Item4 ? "Win7_InactiveNormalImage"
-                        : state.Item2 == ApplicationWindow.WindowState.Active ? "Win7_ActiveNormalImage"
+                    string imageKey = state.Item4 ? "Win7_ActivePointerOverImage"
+                        : state.Item2 == ApplicationWindow.WindowState.Active ? (state.Item3 ? "Win7_ActivePointerOverImage" : "Win7_ActiveNormalImage")
                         : state.Item2 == ApplicationWindow.WindowState.Flashing ? "Win7_RequestingAttentionImage"
                         : state.Item3 ? "Win7_InactivePointerOverImage" : "Win7_InactiveNormalImage";
                     RetroBar.Controls.TaskButtonChrome chrome = (RetroBar.Controls.TaskButtonChrome)button.Template.FindName("ButtonChrome", button);

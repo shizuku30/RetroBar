@@ -25,6 +25,7 @@ Local integration fixes:
 - Localize the Win7 overflow's Customize link and open RetroBar's own notification customization dialog instead of Windows settings.
 - Reuse the existing Win7 task-button images with fixed-size corner/edge slices, keeping the thin black outline instead of thick nested borders and a permanent blue glow. Center icon-only content independently of the chrome; retain vertical labels, badges, pressed feedback, and amber flashing.
 - Give horizontal Win7 tasks and closed pinned items the same 40px row, without negative taskbar content margins or extra vertical button margins. Running buttons no longer shrink to their icon's natural height; both icon types use the native 32px icon with 4px above/below.
+- Match Win7 hot tracking to the displayed icon's dominant color and the pointer position. Closed shortcuts use Aero's dedicated hover/pressed frames, not notification-area highlights; their frames and glow fade away when the pointer leaves.
 
 The normal-state icon metrics were checked against the supplied Windows 7
 `explorer.exe` drawing path (`CTaskListWnd::_HandleThemeChanged` and
@@ -33,6 +34,19 @@ The normal-state icon metrics were checked against the supplied Windows 7
 4px. The theme file SHA-256 is
 `6da5ef369e56d81ba737b65d69a3316d40096e52b1a1bedb87a90f5dbf6925e2`.
 These are 96-DPI metrics; no guessed vertical translation is applied.
+
+Hot tracking follows the inspected `GetDominantColorFromHICON`,
+`CTaskBtnGroup::_DrawHotTrackingLight` and `DrawRadialGradient` rules: 27 RGB
+buckets of width 86, nonzero alpha, saturation span greater than 48, and a 7%
+dominance threshold. Unsuitable icons use Aero's blue `GLOWCOLOR` (`#33C2FF`).
+A 100-step cosine ramp has a lightened inner core and a larger edge halo;
+the light follows X on horizontal bars and Y on vertical bars. Icon-only mode
+uses the native brighter core. Icon sampling is cached for frozen images;
+mutable icon changes refresh the color, and pointer moves reuse the pixel buffer.
+The glow is drawn below the Aero frame without affecting sizing, icon sources,
+clicks or callback data. Closed shortcut images come from `IMAGE/1014`, states
+9/10; running inactive/active hover frames use states 3/6. These retain their
+complete 40px height and have corrected PNG alpha interpretation.
 
 ## Themed system tray icons
 
@@ -158,6 +172,11 @@ templates and scroll presenters, leaving item heights to the theme rather than
 forcing test-control heights. They check 20 one/two-row layouts at real WPF
 100/125/150/175/200% DPI and separate 100/150% taskbar scaling, including icon
 aspect ratio, ancestor clipping, matching baselines and native 40px row height.
+Hot-tracking checks cover gray/transparent pixels, saturation and dominance
+thresholds, bucket ties, alpha handling, mutable icon updates, horizontal/vertical
+pointer movement, clipping, closed hover/pressed/idle states and event cleanup.
+The real button templates are rendered at 100/125/150/200% WPF DPI with several
+sample colors and left/center/right pointer positions.
 
 The following larger changes were deliberately left out: grouped tasks (#1433),
 per-monitor/layout redesign (#1503), and low-level mouse-hook replacement (#1413).

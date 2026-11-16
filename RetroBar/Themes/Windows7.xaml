@@ -59,9 +59,10 @@
 
 
 
-    <!-- ===== WIN7 THEME RESOURCES FROM https://github.com/ramensoftware/windows-11-taskbar-styling-guide/tree/main/Themes/Windows7/ThemeResources =====
-         All resources implemented, excluding those already present (unmodified) -->
+    <!-- Win7 其余资源沿用 https://github.com/ramensoftware/windows-11-taskbar-styling-guide/tree/main/Themes/Windows7/ThemeResources
+         任务按钮悬停/按下图片使用原版 Aero 状态；来源见 ../Resources/Win7/Win7.md。 -->
     <BitmapImage x:Key="Win7_ActiveNormalImage" UriSource="../Resources/Win7/ActiveNormal.png" />
+    <BitmapImage x:Key="Win7_ActivePointerOverImage" UriSource="../Resources/Win7/ActivePointerOver.png" />
     <BitmapImage x:Key="Win7_InactiveNormalImage" UriSource="../Resources/Win7/InactiveNormal.png" />
     <BitmapImage x:Key="Win7_InactivePointerOverImage" UriSource="../Resources/Win7/InactivePointerOver.png" />
     <BitmapImage x:Key="Win7_NotRunningPointerOverImage" UriSource="../Resources/Win7/notRunningPointerOver.png" />
@@ -88,6 +89,7 @@
     <BitmapImage x:Key="Win7_OrbPressedImage" UriSource="../Resources/Win7/orbPressed.png" />
 
     <ImageBrush x:Key="Win7_ActiveNormalBrush" ImageSource="{StaticResource Win7_ActiveNormalImage}" Stretch="Fill" />
+    <ImageBrush x:Key="Win7_ActivePointerOverBrush" ImageSource="{StaticResource Win7_ActivePointerOverImage}" Stretch="Fill" />
     <ImageBrush x:Key="Win7_InactiveNormalBrush" ImageSource="{StaticResource Win7_InactiveNormalImage}" Stretch="Fill" />
     <ImageBrush x:Key="Win7_InactivePointerOverBrush" ImageSource="{StaticResource Win7_InactivePointerOverImage}" Stretch="Fill" />
     <ImageBrush x:Key="Win7_NotRunningPointerOverBrush" ImageSource="{StaticResource Win7_NotRunningPointerOverImage}" Stretch="Fill" />
@@ -792,38 +794,46 @@
         </Setter>
     </Style>
 
-    <!-- Win7 按钮复用已有主题图片；背景与内容分层，边框和状态变化不再挤压图标。 -->
+    <Style x:Key="Win7HotTrack" TargetType="{x:Type controls:TaskButtonHotTrack}">
+        <Setter Property="Opacity" Value="0" />
+        <Setter Property="Orientation"
+                Value="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Value="Vertical">
+                <Setter Property="IconOnly" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.12" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.25" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Win7 图标取色与指针光晕先绘制，再叠加 Aero 框体；内容布局不受光晕位置影响。 -->
     <ControlTemplate x:Key="Win7TaskButtonTemplate" TargetType="Button">
         <Grid Background="Transparent" x:Name="ButtonBorder">
+            <controls:TaskButtonHotTrack x:Name="HotTrack"
+                                         Icon="{Binding Icon}"
+                                         Style="{StaticResource Win7HotTrack}" />
             <controls:TaskButtonChrome x:Name="ButtonChrome"
                                        Source="{Binding Background.ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
                                        IsHitTestVisible="False" />
-            <Border x:Name="HoverLight"
-                    Background="{DynamicResource TaskButtonBottomBackgroundHover}"
-                    Height="10"
-                    VerticalAlignment="Bottom"
-                    Margin="2,0,2,2"
-                    Opacity="0"
-                    IsHitTestVisible="False" />
-            <Border x:Name="PressedShade"
-                    Background="#40000000"
-                    CornerRadius="1"
-                    Margin="1"
-                    Opacity="0"
-                    IsHitTestVisible="False" />
             <ContentPresenter x:Name="Content"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
         </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="HoverLight" Property="Opacity" Value="0.45" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter TargetName="PressedShade" Property="Opacity" Value="1" />
-                <Setter TargetName="HoverLight" Property="Opacity" Value="0" />
-            </Trigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="Button" x:Key="TaskButton">
@@ -849,8 +859,15 @@
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Foreground" Value="{DynamicResource ButtonPressedForeground}" />
-                <Setter Property="Background" Value="{DynamicResource Win7_InactiveNormalBrush}" />
+                <Setter Property="Background" Value="{DynamicResource Win7_ActiveNormalBrush}" />
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True" />
+                    <Condition Property="IsPressed" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource Win7_ActivePointerOverBrush}" />
+            </MultiTrigger>
         </Style.Triggers>
     </Style>
 
@@ -859,10 +876,7 @@
         <Setter Property="Background" Value="{DynamicResource Win7_ActiveNormalBrush}" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource Win7_ActiveNormalBrush}" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource Win7_InactiveNormalBrush}" />
+                <Setter Property="Background" Value="{DynamicResource Win7_ActivePointerOverBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -874,6 +888,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid Background="Transparent" x:Name="ButtonBorder">
+                        <controls:TaskButtonHotTrack x:Name="HotTrack"
+                                                     Icon="{Binding Icon}"
+                                                     Style="{StaticResource Win7HotTrack}" />
                         <controls:TaskButtonChrome x:Name="ButtonChrome"
                                                    Source="{Binding Background.ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
                                                    IsHitTestVisible="False" />
@@ -1817,17 +1834,7 @@
         </Style.Triggers>
     </Style>
 
-    <!-- ===== SUPERBAR PINNED ITEMS - SAME AREA AS OPEN WINDOWS =====
-         Windows 7 Superbar: pinned icons live in the exact same area as
-         open windows. When closed: just a transparent icon + glass hover.
-         When launched: it turns directly into the active-window button
-         (open glass frame + bottom glow), with no duplicate.
-
-         This ToolbarButton style uses EXACTLY the same brushes and template
-         as TaskButton, but with a transparent normal state (pinned, closed).
-         Hover = bright glass, Pressed = active dark glass + glow.
-         Same dimensions as TaskButton (58px) for perfect unification.
-    -->
+    <!-- 快捷栏与任务列表共享图标尺寸、行高和取色光晕；未打开项的专用框体只在悬停或按下时显示。 -->
     <Style TargetType="Image" x:Key="ToolbarIcon" BasedOn="{StaticResource TaskIcon}">
         <Setter Property="Width" Value="32" />
         <Setter Property="Height" Value="32" />
@@ -1836,84 +1843,45 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-        <!-- TOOLBARBUTTON (PINNED CLOSED): hover = same tray rectangles | icon | with accurate dimensions -->
-    <Style TargetType="Button" x:Key="ToolbarButton">
-        <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
-        <Setter Property="Margin" Value="{DynamicResource TaskButtonMargin}" />
+    <!-- 未打开快捷项使用原版 TaskBand2 状态 9/10，不再复用通知区域的两条悬停亮线。 -->
+    <Style TargetType="Button" x:Key="ToolbarButton" BasedOn="{StaticResource TaskButton}">
+        <Setter Property="Background" Value="{DynamicResource Win7_NotRunningPointerOverBrush}" />
         <Setter Property="Width" Value="{DynamicResource TaskButtonWidth}" />
         <Setter Property="Height" Value="40" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid SnapsToDevicePixels="True">
-                        <!-- PINNED NOT OPEN: widened 7% (52->56) | icon | - tray restored -->
-                        <Canvas x:Name="HoverCanvas"
-                                Width="0"
-                                Height="0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                IsHitTestVisible="False">
-                            <Image x:Name="HoverTileImg"
-                                   Width="56"
-                                   Height="40"
-                                   Canvas.Left="-28"
-                                   Canvas.Top="-20"
-                                   Stretch="Fill"
-                                   SnapsToDevicePixels="True"
-                                   Source="{DynamicResource TrayTileHoverImage}"
-                                   Opacity="0" />
-                        </Canvas>
-                        <!-- Centered 32px icon -->
+                    <Grid Background="Transparent" x:Name="ButtonBorder">
+                        <controls:TaskButtonHotTrack x:Name="HotTrack"
+                                                     Icon="{Binding Content.Source, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     IconOnly="True"
+                                                     Style="{StaticResource Win7HotTrack}" />
+                        <controls:TaskButtonChrome x:Name="ButtonChrome"
+                                                   Source="{Binding Background.ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                                   Opacity="{Binding ElementName=HotTrack, Path=Opacity}"
+                                                   IsHitTestVisible="False" />
                         <ContentPresenter x:Name="Content"
-                                          Margin="6,0"
-                                          VerticalAlignment="Center"
-                                          HorizontalAlignment="Center" />
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard x:Name="TrayHoverIn">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="HoverTileImg"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1"
-                                                         Duration="0:0:0.12" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard x:Name="TrayHoverOut">
-                                    <Storyboard>
-                                        <DoubleAnimation FillBehavior="Stop"
-                                                         Storyboard.TargetName="HoverTileImg"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0"
-                                                         Duration="0:0:0.25" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="HoverTileImg" Property="Source" Value="{DynamicResource TrayTilePressedImage}" />
-                            <Setter TargetName="HoverTileImg" Property="Opacity" Value="1" />
+                            <Setter TargetName="ButtonChrome" Property="Opacity" Value="1" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
-                                     Value="Vertical">
-                            <Setter TargetName="HoverCanvas" Property="Margin" Value="0,13,0,0" />
-                            <Setter TargetName="HoverTileImg" Property="Height" Value="27" />
-                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Path=Orientation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
-                         Value="Horizontal">
-                <Setter Property="Margin" Value="1,0,1,0" />
-            </DataTrigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Win7_NotRunningPointerOverBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Win7_NotRunningPressedBrush}" />
+            </Trigger>
         </Style.Triggers>
     </Style>
+
 
     <!-- ToolbarButtonActive keeps the active glass for when a pinned item is running (optional) -->
     <Style TargetType="Button" x:Key="ToolbarButtonActive" BasedOn="{StaticResource TaskButtonActive}">
